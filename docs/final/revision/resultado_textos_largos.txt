@@ -1,0 +1,2 @@
+PASS alias: 320px, largeText + highContrast, sin desbordamiento [320, 320]
+PASS reporte: 320px, largeText + highContrast, sin desbordamiento [320, 320]

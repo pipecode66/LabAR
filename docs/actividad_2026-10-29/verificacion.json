@@ -1,0 +1,267 @@
+{
+  "actividad": "Actividad 29/10/2026",
+  "proyecto": "LabAR Seguro",
+  "captura_iso8601": "2026-10-29T20:29:19.585337-05:00",
+  "entorno": {
+    "navegador": "MicrosoftEdge",
+    "version": "156.0.4314.50",
+    "viewport": "390 × 844 px; emulación móvil de escritorio"
+  },
+  "resultado": "APROBADO",
+  "pruebas": [
+    {
+      "prueba": "Inicio y estructura",
+      "resultado": "APROBADA",
+      "detalle": "Se encuentran ocho vistas; la vista inicial es home."
+    },
+    {
+      "prueba": "Selección de práctica",
+      "resultado": "APROBADA",
+      "detalle": "Continuar permanece desactivado antes de seleccionar la práctica."
+    },
+    {
+      "prueba": "Práctica seleccionada",
+      "resultado": "APROBADA",
+      "detalle": "La selección del DT-830B habilita Continuar."
+    },
+    {
+      "prueba": "Escaneo simulado",
+      "resultado": "APROBADA",
+      "detalle": "El temporizador muestra el resultado fijo LAB-01; no accede a cámara."
+    },
+    {
+      "prueba": "Equipo diferente",
+      "resultado": "APROBADA",
+      "detalle": "No coincide muestra aviso y mantiene desactivado el botón de avance."
+    },
+    {
+      "prueba": "Lista inicial",
+      "resultado": "APROBADA",
+      "detalle": "Existen cinco casillas y el botón inicia desactivado."
+    },
+    {
+      "prueba": "Lista incompleta",
+      "resultado": "APROBADA",
+      "detalle": "Con cuatro verificaciones no se habilita Iniciar guía visual."
+    },
+    {
+      "prueba": "Lista completa",
+      "resultado": "APROBADA",
+      "detalle": "Con cinco verificaciones se habilita el botón en el recorrido normal."
+    },
+    {
+      "prueba": "Guía dinámica",
+      "resultado": "APROBADA",
+      "detalle": "Siguiente cambia del paso 1 al paso 2 y actualiza la instrucción."
+    },
+    {
+      "prueba": "Pérdida simulada",
+      "resultado": "APROBADA",
+      "detalle": "Se presenta un estado de pausa con alternativas de recuperación."
+    },
+    {
+      "prueba": "Alternativa 2D",
+      "resultado": "APROBADA",
+      "detalle": "El modo 2D conserva el segundo paso y actualiza la etiqueta de modalidad."
+    },
+    {
+      "prueba": "Evaluación incompleta",
+      "resultado": "APROBADA",
+      "detalle": "El formulario solicita contestar las tres preguntas y no calcula un resultado incompleto."
+    },
+    {
+      "prueba": "Puntuación correcta",
+      "resultado": "APROBADA",
+      "detalle": "Las tres respuestas correctas producen un resultado de 3/3."
+    },
+    {
+      "prueba": "Retroalimentación de repaso",
+      "resultado": "APROBADA",
+      "detalle": "Tres respuestas incorrectas generan 0/3 y recomendación de repaso."
+    },
+    {
+      "prueba": "Ancho móvil",
+      "resultado": "APROBADA",
+      "detalle": "La vista comprobada no presenta desbordamiento horizontal a 390 px."
+    },
+    {
+      "prueba": "Estado temporal",
+      "resultado": "APROBADA",
+      "detalle": "La recarga vuelve al inicio; no hay preferencias ni progreso persistidos en este origen limpio."
+    },
+    {
+      "prueba": "Sintaxis JavaScript",
+      "resultado": "APROBADA",
+      "detalle": "node --check frontend/app.js finaliza con código 0."
+    }
+  ],
+  "capturas": [
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E01_inicio.png",
+      "descripcion": "Inicio: propósito, advertencia y acceso al recorrido.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 925,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "7cc52113bfd034f05733f49662faaf762ef2b5f6c1bc3dc99ad7e2854fd9fdd3"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E02_practica.png",
+      "descripcion": "Única práctica habilitada y selección activa.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 844,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "0b7e782c2ba5cf1f8c540108afbf9aaa320c44b73d06caf963a5a7f1e94aebd2"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E03_escaneo.png",
+      "descripcion": "Resultado de escaneo simulado: puesto LAB-01.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1088,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "f115a3629586a32c294a9e5fb5ce7a93f2951b4d20354d4ffa8cc381fd6027c9"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E04_equipo_no_coincide.png",
+      "descripcion": "Discrepancia del equipo y botón de avance desactivado.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1010,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "ab6e209a3b452776ad36c3704b5533cc10ef15256b5a2d4d7b5bd91078cc9aa3"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E05_checklist_pendiente.png",
+      "descripcion": "Cuatro de cinco verificaciones; avance desactivado.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1129,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "9d3bb2923f2c35ab036bceb3e83cdbc3026f165f7ec8999ae1ed0c6f8a367f9e"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E06_checklist_completa.png",
+      "descripcion": "Cinco verificaciones y botón de inicio habilitado.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1129,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "f1461f12c34988592abf2ba3d868a58620ceb28c6463a044ff86e85d0bee0555"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E07_guia_ar.png",
+      "descripcion": "Segundo paso de la guía: puertos COM y VΩmA; AR simulada.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1062,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "746a67063ab9405715ad0cf790eb3e563bb49d7aa73c03d98bfad50f84e3bcb4"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E08_marcador_perdido.png",
+      "descripcion": "Pausa ante pérdida de marcador simulada.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 844,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "7bfa00caf4f687201393592181661ef538ae49d0e4e651e67ae26b63fc7e029f"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E09_guia_2d.png",
+      "descripcion": "Guía 2D en el mismo paso recuperado.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 1062,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "0eb513812dcfaf6cb77ea29688fd498ddaf28f7b2250076208d4d6780d6542d6"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E10_resultado.png",
+      "descripcion": "Resultado verificable: tres respuestas correctas.",
+      "tipo": "interfaz",
+      "dimensiones": {
+        "height": 891,
+        "width": 390
+      },
+      "fuente": null,
+      "sha256": "52642adf6bcbdbb93dda6c01bc2312cc1fac3d937a9cc026ced18c6c41974167"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E11_codigo_controles.png",
+      "descripcion": "Confirmación y lista preventiva",
+      "tipo": "codigo",
+      "dimensiones": {
+        "height": 1013,
+        "width": 1000
+      },
+      "fuente": {
+        "archivo": "frontend/app.js",
+        "primera_linea": 178,
+        "ultima_linea": 208
+      },
+      "sha256": "7bfbe87c64baed3bc73b0a3a7941eecb42eb46fe9eccf6359f339a8a5058ae4c"
+    },
+    {
+      "archivo": "docs/actividad_2026-10-29/evidencias/E12_codigo_evaluacion.png",
+      "descripcion": "Validación y puntuación de la evaluación",
+      "tipo": "codigo",
+      "dimensiones": {
+        "height": 1088,
+        "width": 1000
+      },
+      "fuente": {
+        "archivo": "frontend/app.js",
+        "primera_linea": 262,
+        "ultima_linea": 293
+      },
+      "sha256": "eb2b29dba235cb5368b7c3c35e417255bed1ba19fa18de4ed33dc9e78698aa06"
+    }
+  ],
+  "fuentes": [
+    {
+      "archivo": "frontend/index.html",
+      "sha256": "993535dc6077855a39a3ce4bedc228368e379869fa4cea1386156699f920c63d",
+      "lineas": 309
+    },
+    {
+      "archivo": "frontend/styles.css",
+      "sha256": "f7a6de5b425c8c8baa3412a4665cc60c7f56a3503376b8277ab590bc21b89c45",
+      "lineas": 1042
+    },
+    {
+      "archivo": "frontend/app.js",
+      "sha256": "51c5c2c5977fb7ea81772291ac0743c0403e9a64f7b43c1d5c6dd0285e0a5fe1",
+      "lineas": 312
+    },
+    {
+      "archivo": "frontend/README.md",
+      "sha256": "3766c8167d024f4f6fc6932727615d852d29b491093818ca2ec46665b558b762",
+      "lineas": 31
+    },
+    {
+      "archivo": "docs/_qa/test_frontend.py",
+      "sha256": "a6e86acf7cbea78d510a1819a6fa7974a346c56064d37bac3f9a3810763c2f2d",
+      "lineas": 107
+    }
+  ]
+}

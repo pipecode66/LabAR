@@ -1,0 +1,320 @@
+{
+  "date": "2026-11-01T01:12:43.091681-05:00",
+  "passed": 46,
+  "failed": 0,
+  "error": null,
+  "results": [
+    {
+      "name": "Servidor/API disponible con SQLite temporal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bienvenida y recursos locales cargan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Perfil y preferencias se guardan en API",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Perfil persiste al recargar",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Ruta directa de guía no permite saltar precondiciones",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Discrepancia muestra bloqueo en interfaz",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Checklist inicial bloquea su botón",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Cuatro verificaciones siguen bloqueando avance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Cinco verificaciones habilitan avance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Lista validada en servidor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Progreso del paso persiste en SQLite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reanudación exige reconfirmación y lista",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reanudación conserva el paso alcanzado",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Evaluación incompleta muestra aviso y no genera resultado",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Puntaje 3/3 calculado por servidor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Historial persiste al recargar",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Reporte de inconsistencia se guarda realmente en la API",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Exportación descarga los datos propios",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Exportación incluye reporte y omite token de sesión",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Consulta de datos muestra el perfil propio",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Cancelar borrado conserva historial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Borrar progreso elimina intentos y reportes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Borrar progreso conserva el perfil",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Eliminar todos los datos reinicia perfil y sesión",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Fallo de conexión conserva formulario y permite reintentar",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Alias se representa como texto sin ejecutar HTML",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Formato y alto contraste se aplican y persisten",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Lector local disponible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "QR imprimible se decodifica con jsQR real",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Cámara virtual abre stream de video",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Guía RA habilitada tras detectar marcador real en cámara virtual",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Pérdida de QR real en fuente virtual pausa la guía",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Recuperación tras perder QR conserva paso en 2D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Botón Detener pausa la ejecución",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Consulta al docente explica el mecanismo presencial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Guía estándar desactiva personalización de forma persistente",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Modo AR bloquea confirmación antes de reconocer el marcador",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Permiso denegado muestra error y mantiene alternativa 2D",
+      "passed": true,
+      "detail": "Permiso de cámara denegado. Habilítalo en el navegador o continúa en 2D."
+    },
+    {
+      "name": "Imagen sin QR se rechaza sin habilitar confirmación",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Carga de imagen reconoce el QR y selecciona modo 2D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Respuestas erróneas generan 0/3 y tres temas de repaso",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bienvenida sin desbordamiento horizontal a 320px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bienvenida sin desbordamiento horizontal a 390px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bienvenida sin desbordamiento horizontal a 768px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Bienvenida sin desbordamiento horizontal a 1440px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Recorrido sin errores JavaScript no controlados",
+      "passed": true,
+      "detail": "[]"
+    }
+  ],
+  "screenshots": [
+    {
+      "id": "01_bienvenida",
+      "path": "docs/final/evidencias/01_bienvenida.png",
+      "caption": "Diseño de bienvenida integrado a partir de Stitch."
+    },
+    {
+      "id": "02_preferencias",
+      "path": "docs/final/evidencias/02_preferencias.png",
+      "caption": "Configuración de perfil, accesibilidad y personalización."
+    },
+    {
+      "id": "03_inicio",
+      "path": "docs/final/evidencias/03_inicio.png",
+      "caption": "Inicio personalizado con progreso e historial real de la sesión."
+    },
+    {
+      "id": "04_confirmacion",
+      "path": "docs/final/evidencias/04_confirmacion.png",
+      "caption": "Confirmación manual del modelo y estado de discrepancia."
+    },
+    {
+      "id": "05_lista",
+      "path": "docs/final/evidencias/05_lista.png",
+      "caption": "Lista preventiva completa; controles de interacción habilitados."
+    },
+    {
+      "id": "06_guia_2d",
+      "path": "docs/final/evidencias/06_guia_2d.png",
+      "caption": "Guía 2D equivalente, paso a paso y con ayuda contextual."
+    },
+    {
+      "id": "07_resultado",
+      "path": "docs/final/evidencias/07_resultado.png",
+      "caption": "Evaluación y retroalimentación calculadas por el backend."
+    },
+    {
+      "id": "08_historial",
+      "path": "docs/final/evidencias/08_historial.png",
+      "caption": "Historial de ejecuciones guardado por sesión anónima."
+    },
+    {
+      "id": "09_privacidad",
+      "path": "docs/final/evidencias/09_privacidad.png",
+      "caption": "Controles para exportar datos y eliminar progreso o perfil."
+    },
+    {
+      "id": "10_camara",
+      "path": "docs/final/evidencias/10_camara.png",
+      "caption": "Cámara con fuente virtual de prueba y detección real del QR."
+    },
+    {
+      "id": "11_guia_ra",
+      "path": "docs/final/evidencias/11_guia_ra.png",
+      "caption": "Superposición contextual sobre el QR, procesada localmente."
+    },
+    {
+      "id": "12_pausa",
+      "path": "docs/final/evidencias/12_pausa.png",
+      "caption": "Pausa de la ejecución y opciones de recuperación."
+    },
+    {
+      "id": "14_repaso",
+      "path": "docs/final/evidencias/14_repaso.png",
+      "caption": "Resultado con errores y recomendaciones de repaso por concepto."
+    },
+    {
+      "id": "13_escritorio",
+      "path": "docs/final/evidencias/13_escritorio.png",
+      "caption": "Diseño adaptable a escritorio con identidad visual de Stitch."
+    }
+  ],
+  "camera": {
+    "physicalDeviceTested": false,
+    "imageMarkerTested": true,
+    "fakeCameraTested": true
+  },
+  "scope": [
+    "Edge emulación móvil y escritorio",
+    "API real con SQLite temporal",
+    "marcador QR y cámara virtual; sin hardware físico"
+  ]
+}

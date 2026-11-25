@@ -1,0 +1,25 @@
+{
+  "resultado": "APROBADO",
+  "archivos": [
+    {
+      "archivo": "Documentacion_Final_LabAR_Seguro.pdf",
+      "paginas": 25,
+      "imagenes": 9,
+      "marcadores": 37,
+      "sha256": "66b87f69b57300b7a5c3f70f6847250e0d805af51ea96e45e7401baa62609a14"
+    },
+    {
+      "archivo": "Manual_Usuario_LabAR_Seguro.pdf",
+      "paginas": 15,
+      "imagenes": 7,
+      "marcadores": 27,
+      "sha256": "63ace02cefeb16a96fc302752b59a17f736a4b03adbb7a73264a26b15174e9a3"
+    },
+    {
+      "archivo": "Compendio_Documental_LabAR_Seguro.pdf",
+      "paginas": 108,
+      "marcadores": 71,
+      "sha256": "d7439a2594009252441561fb6b75cd1a09237b718fc3fa1f9f8af9a8bd17b135"
+    }
+  ]
+}

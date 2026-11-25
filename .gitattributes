@@ -1,0 +1,13 @@
+# Conservar los formatos de documentos, capturas y videos de prueba como binarios.
+*.pdf binary
+*.docx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.y4m binary
+
+# Distinguir dependencias y material académico del código mantenido del proyecto.
+frontend/vendor/** linguist-vendored
+docs/** linguist-documentation
+tests/fixtures/** linguist-generated

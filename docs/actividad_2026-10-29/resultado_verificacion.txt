@@ -1,0 +1,24 @@
+LabAR Seguro | verificación del frontend existente
+Actividad 29/10/2026
+
+APROBADA | Inicio y estructura: Se encuentran ocho vistas; la vista inicial es home.
+APROBADA | Selección de práctica: Continuar permanece desactivado antes de seleccionar la práctica.
+APROBADA | Práctica seleccionada: La selección del DT-830B habilita Continuar.
+APROBADA | Escaneo simulado: El temporizador muestra el resultado fijo LAB-01; no accede a cámara.
+APROBADA | Equipo diferente: No coincide muestra aviso y mantiene desactivado el botón de avance.
+APROBADA | Lista inicial: Existen cinco casillas y el botón inicia desactivado.
+APROBADA | Lista incompleta: Con cuatro verificaciones no se habilita Iniciar guía visual.
+APROBADA | Lista completa: Con cinco verificaciones se habilita el botón en el recorrido normal.
+APROBADA | Guía dinámica: Siguiente cambia del paso 1 al paso 2 y actualiza la instrucción.
+APROBADA | Pérdida simulada: Se presenta un estado de pausa con alternativas de recuperación.
+APROBADA | Alternativa 2D: El modo 2D conserva el segundo paso y actualiza la etiqueta de modalidad.
+APROBADA | Evaluación incompleta: El formulario solicita contestar las tres preguntas y no calcula un resultado incompleto.
+APROBADA | Puntuación correcta: Las tres respuestas correctas producen un resultado de 3/3.
+APROBADA | Retroalimentación de repaso: Tres respuestas incorrectas generan 0/3 y recomendación de repaso.
+APROBADA | Ancho móvil: La vista comprobada no presenta desbordamiento horizontal a 390 px.
+APROBADA | Estado temporal: La recarga vuelve al inicio; no hay preferencias ni progreso persistidos en este origen limpio.
+APROBADA | Sintaxis JavaScript: node --check frontend/app.js finaliza con código 0.
+
+TOTAL: 17 comprobaciones aprobadas.
+CAPTURAS: 12.
+No se verificó hardware real, seguimiento AR ni un servicio API.

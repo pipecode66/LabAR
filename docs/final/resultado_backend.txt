@@ -1,0 +1,198 @@
+TAP version 13
+# (node:18808) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: salud, bootstrap y contenido público no exponen claves de respuestas
+ok 1 - salud, bootstrap y contenido público no exponen claves de respuestas
+  ---
+  duration_ms: 30.9992
+  type: 'test'
+  ...
+# Subtest: perfil: se actualiza parcialmente y rechaza tipos/campos inválidos
+ok 2 - perfil: se actualiza parcialmente y rechaza tipos/campos inválidos
+  ---
+  duration_ms: 19.7776
+  type: 'test'
+  ...
+# Subtest: actualizaciones parciales concurrentes conservan ambos cambios del perfil
+ok 3 - actualizaciones parciales concurrentes conservan ambos cambios del perfil
+  ---
+  duration_ms: 9.0121
+  type: 'test'
+  ...
+# Subtest: borrado completo invalida mutaciones que todavía estaban recibiendo su cuerpo
+ok 4 - borrado completo invalida mutaciones que todavía estaban recibiendo su cuerpo
+  ---
+  duration_ms: 8.1973
+  type: 'test'
+  ...
+# Subtest: cookie persiste perfil, progreso y reportes al reiniciar el servidor SQLite
+ok 5 - cookie persiste perfil, progreso y reportes al reiniciar el servidor SQLite
+  ---
+  duration_ms: 33.8734
+  type: 'test'
+  ...
+# Subtest: sesiones aisladas: otra cookie no lee ni modifica ejecuciones ajenas
+ok 6 - sesiones aisladas: otra cookie no lee ni modifica ejecuciones ajenas
+  ---
+  duration_ms: 7.5991
+  type: 'test'
+  ...
+# Subtest: sesiones vencidas se purgan al reiniciar y el token crudo no se guarda
+ok 7 - sesiones vencidas se purgan al reiniciar y el token crudo no se guarda
+  ---
+  duration_ms: 33.9885
+  type: 'test'
+  ...
+# Subtest: crear ejecución idempotente: no duplica una práctica activa
+ok 8 - crear ejecución idempotente: no duplica una práctica activa
+  ---
+  duration_ms: 5.4315
+  type: 'test'
+  ...
+# Subtest: servidor impide iniciar guía sin confirmación y cinco verificaciones
+ok 9 - servidor impide iniciar guía sin confirmación y cinco verificaciones
+  ---
+  duration_ms: 13.6258
+  type: 'test'
+  ...
+# Subtest: secuencia de pasos: no permite saltos; admite retroceso y exige guía completa antes de evaluar
+ok 10 - secuencia de pasos: no permite saltos; admite retroceso y exige guía completa antes de evaluar
+  ---
+  duration_ms: 13.6305
+  type: 'test'
+  ...
+# Subtest: pausa y alternativa 2D conservan paso; reingreso obliga a reconfirmar
+ok 11 - pausa y alternativa 2D conservan paso; reingreso obliga a reconfirmar
+  ---
+  duration_ms: 10.7055
+  type: 'test'
+  ...
+# Subtest: retirar confirmación invalida lista previa y obliga a cinco comprobaciones nuevas
+ok 12 - retirar confirmación invalida lista previa y obliga a cinco comprobaciones nuevas
+  ---
+  duration_ms: 12.4775
+  type: 'test'
+  ...
+# Subtest: calificación del servidor, retroalimentación y repetición generan un historial real
+ok 13 - calificación del servidor, retroalimentación y repetición generan un historial real
+  ---
+  duration_ms: 14.559
+  type: 'test'
+  ...
+# Subtest: doble envío concurrente de evaluación guarda un solo resultado inmutable
+ok 14 - doble envío concurrente de evaluación guarda un solo resultado inmutable
+  ---
+  duration_ms: 13.1832
+  type: 'test'
+  ...
+# Subtest: personalización explicable: dos ejecuciones perfectas permiten guía compacta y puede apagarse
+ok 15 - personalización explicable: dos ejecuciones perfectas permiten guía compacta y puede apagarse
+  ---
+  duration_ms: 20.8121
+  type: 'test'
+  ...
+# Subtest: incidencias se guardan con validación y exportación propia sin token
+ok 16 - incidencias se guardan con validación y exportación propia sin token
+  ---
+  duration_ms: 7.6389
+  type: 'test'
+  ...
+# Subtest: borrar progreso preserva preferencias y borrar todos los datos renueva sesión
+ok 17 - borrar progreso preserva preferencias y borrar todos los datos renueva sesión
+  ---
+  duration_ms: 8.3042
+  type: 'test'
+  ...
+# Subtest: borrado de una sesión no elimina perfil ni progreso de otra
+ok 18 - borrado de una sesión no elimina perfil ni progreso de otra
+  ---
+  duration_ms: 8.4662
+  type: 'test'
+  ...
+# Subtest: protección de origen y cabecera rechaza solicitudes cruzadas
+ok 19 - protección de origen y cabecera rechaza solicitudes cruzadas
+  ---
+  duration_ms: 5.521
+  type: 'test'
+  ...
+# Subtest: origen HTTPS público explícito funciona tras proxy y no acepta otro origen
+ok 20 - origen HTTPS público explícito funciona tras proxy y no acepta otro origen
+  ---
+  duration_ms: 4.6054
+  type: 'test'
+  ...
+# Subtest: CLI rechaza un PUBLIC_ORIGIN con ruta o credenciales antes de abrir la base
+ok 21 - CLI rechaza un PUBLIC_ORIGIN con ruta o credenciales antes de abrir la base
+  ---
+  duration_ms: 202.8797
+  type: 'test'
+  ...
+# Subtest: validación de cuerpo: JSON malformado, tipo, tamaño y array
+ok 22 - validación de cuerpo: JSON malformado, tipo, tamaño y array
+  ---
+  duration_ms: 6.5402
+  type: 'test'
+  ...
+# Subtest: archivos estáticos: entrega app, impide acceso a docs/base y rutas peligrosas
+ok 23 - archivos estáticos: entrega app, impide acceso a docs/base y rutas peligrosas
+  ---
+  duration_ms: 11.5258
+  type: 'test'
+  ...
+# Subtest: límite de solicitudes protege API por sesión sin bloquear salud
+ok 24 - límite de solicitudes protege API por sesión sin bloquear salud
+  ---
+  duration_ms: 4.4357
+  type: 'test'
+  ...
+# Subtest: la cámara rechaza un origen no seguro con alternativa 2D
+ok 25 - la cámara rechaza un origen no seguro con alternativa 2D
+  ---
+  duration_ms: 0.9374
+  type: 'test'
+  ...
+# Subtest: permiso denegado se convierte en un mensaje útil y no deja stream
+ok 26 - permiso denegado se convierte en un mensaje útil y no deja stream
+  ---
+  duration_ms: 0.1648
+  type: 'test'
+  ...
+# Subtest: detener libera todos los tracks y retira listeners
+ok 27 - detener libera todos los tracks y retira listeners
+  ---
+  duration_ms: 0.3223
+  type: 'test'
+  ...
+# Subtest: una cámara concedida después de cancelar libera su stream tardío
+ok 28 - una cámara concedida después de cancelar libera su stream tardío
+  ---
+  duration_ms: 0.1516
+  type: 'test'
+  ...
+# Subtest: ocultar pestaña libera cámara y notifica pérdida
+ok 29 - ocultar pestaña libera cámara y notifica pérdida
+  ---
+  duration_ms: 0.1575
+  type: 'test'
+  ...
+# Subtest: rechaza archivos inválidos y mayores de 10MB antes de procesar
+ok 30 - rechaza archivos inválidos y mayores de 10MB antes de procesar
+  ---
+  duration_ms: 0.2169
+  type: 'test'
+  ...
+# Subtest: la pérdida real del marcador invoca una sola pausa por evento
+ok 31 - la pérdida real del marcador invoca una sola pausa por evento
+  ---
+  duration_ms: 0.7178
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 580.2394

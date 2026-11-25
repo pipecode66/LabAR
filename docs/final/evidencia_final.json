@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-01T01:12:43.183688-05:00",
+  "version": "1.0.0",
+  "backend": {
+    "passed": 31,
+    "failed": 0,
+    "command": "npm test",
+    "log": "docs/final/resultado_backend.txt",
+    "actualCommand": "node --test --test-reporter=tap tests/backend.test.mjs tests/camera.test.mjs"
+  },
+  "e2e": {
+    "passed": 46,
+    "failed": 0,
+    "command": "python tests/e2e.py",
+    "log": "docs/final/resultado_integracion.txt",
+    "scope": [
+      "Edge emulación móvil y escritorio",
+      "API real con SQLite temporal",
+      "marcador QR y cámara virtual; sin hardware físico"
+    ]
+  },
+  "camera": {
+    "physicalDeviceTested": false,
+    "imageMarkerTested": true,
+    "fakeCameraTested": true
+  },
+  "screenshots": [
+    {
+      "id": "01_bienvenida",
+      "path": "docs/final/evidencias/01_bienvenida.png",
+      "caption": "Diseño de bienvenida integrado a partir de Stitch."
+    },
+    {
+      "id": "02_preferencias",
+      "path": "docs/final/evidencias/02_preferencias.png",
+      "caption": "Configuración de perfil, accesibilidad y personalización."
+    },
+    {
+      "id": "03_inicio",
+      "path": "docs/final/evidencias/03_inicio.png",
+      "caption": "Inicio personalizado con progreso e historial real de la sesión."
+    },
+    {
+      "id": "04_confirmacion",
+      "path": "docs/final/evidencias/04_confirmacion.png",
+      "caption": "Confirmación manual del modelo y estado de discrepancia."
+    },
+    {
+      "id": "05_lista",
+      "path": "docs/final/evidencias/05_lista.png",
+      "caption": "Lista preventiva completa; controles de interacción habilitados."
+    },
+    {
+      "id": "06_guia_2d",
+      "path": "docs/final/evidencias/06_guia_2d.png",
+      "caption": "Guía 2D equivalente, paso a paso y con ayuda contextual."
+    },
+    {
+      "id": "07_resultado",
+      "path": "docs/final/evidencias/07_resultado.png",
+      "caption": "Evaluación y retroalimentación calculadas por el backend."
+    },
+    {
+      "id": "08_historial",
+      "path": "docs/final/evidencias/08_historial.png",
+      "caption": "Historial de ejecuciones guardado por sesión anónima."
+    },
+    {
+      "id": "09_privacidad",
+      "path": "docs/final/evidencias/09_privacidad.png",
+      "caption": "Controles para exportar datos y eliminar progreso o perfil."
+    },
+    {
+      "id": "10_camara",
+      "path": "docs/final/evidencias/10_camara.png",
+      "caption": "Cámara con fuente virtual de prueba y detección real del QR."
+    },
+    {
+      "id": "11_guia_ra",
+      "path": "docs/final/evidencias/11_guia_ra.png",
+      "caption": "Superposición contextual sobre el QR, procesada localmente."
+    },
+    {
+      "id": "12_pausa",
+      "path": "docs/final/evidencias/12_pausa.png",
+      "caption": "Pausa de la ejecución y opciones de recuperación."
+    },
+    {
+      "id": "14_repaso",
+      "path": "docs/final/evidencias/14_repaso.png",
+      "caption": "Resultado con errores y recomendaciones de repaso por concepto."
+    },
+    {
+      "id": "13_escritorio",
+      "path": "docs/final/evidencias/13_escritorio.png",
+      "caption": "Diseño adaptable a escritorio con identidad visual de Stitch."
+    }
+  ],
+  "sources": [
+    {
+      "path": "backend/app.mjs",
+      "sha256": "b8f62444b1c670638bac5c580b6585720a51a75c9a03f1831e97cf39e2ce9d96"
+    },
+    {
+      "path": "backend/practice.mjs",
+      "sha256": "219ec1b451ed46766368afbad2c7fedcb28ed47cf3fdc17c027d22e281577318"
+    },
+    {
+      "path": "backend/server.mjs",
+      "sha256": "eeef24156118f4fc514e18340dd30479c59b223cc5e998d901c2bd4e541d93d8"
+    },
+    {
+      "path": "backend/store.mjs",
+      "sha256": "bdae580561d415960a45647534dab08cdc13f659c1e16e6756436630b7340ce6"
+    },
+    {
+      "path": "frontend/app.js",
+      "sha256": "a795b9512c352dd5fa23296b1990cf8b016804c23a032d1644b81dd933ea2504"
+    },
+    {
+      "path": "frontend/camera.js",
+      "sha256": "aedea5639a4140e139486ae23ba47c65c3cd376e868968639762da4f085251d1"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "c316668929cf42585d53541fa8a6adf8b152b19562b94a7169f00f2ec3921aa3"
+    },
+    {
+      "path": "frontend/styles.css",
+      "sha256": "a88fa05270697b5371e7392da3bef4b140eda50ada7b4ebcc80b970f5c1b4a2a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "cddc5c0ebc93ee72788862542a4a4badc30c781a21083886a1b50513cf301c38"
+    }
+  ],
+  "physicalLabPilot": false
+}

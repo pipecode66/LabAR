@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Maqueta navegable de LabAR Seguro para una práctica supervisada con multímetro digital."
+    />
+    <title>LabAR Seguro · Prototipo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#home" data-action="restart" aria-label="Ir al inicio de LabAR Seguro">
+          <span class="brand-mark" aria-hidden="true">⌁</span>
+          <span>LabAR <strong>Seguro</strong></span>
+        </a>
+        <span class="prototype-badge">Prototipo académico</span>
+      </header>
+
+      <div class="progress-wrap" id="progress-wrap" hidden>
+        <div class="progress-copy">
+          <span id="progress-label">Paso 1 de 7</span>
+          <span id="mode-label">Modo AR simulado</span>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-labelledby="progress-label"
+          aria-valuemin="1"
+          aria-valuemax="7"
+          aria-valuenow="1"
+        >
+          <span id="progress-value"></span>
+        </div>
+      </div>
+
+      <main id="main-content" tabindex="-1">
+        <section class="screen screen--home" data-screen="home">
+          <p class="eyebrow">Inducción supervisada · Electrónica básica</p>
+          <h1>Aprende a ubicar controles antes de medir</h1>
+          <p class="lead">
+            Una guía visual para conocer un multímetro digital y practicar la medición de
+            voltaje continuo de baja tensión.
+          </p>
+
+          <div class="hero-demo" aria-label="Ilustración esquemática de un multímetro con indicaciones superpuestas">
+            <div class="mini-meter" aria-hidden="true">
+              <div class="mini-screen">0.00</div>
+              <div class="mini-dial"></div>
+              <div class="mini-ports"><i></i><i></i><i></i></div>
+            </div>
+            <span class="hero-tag hero-tag--one">Selector</span>
+            <span class="hero-tag hero-tag--two">Puerto COM</span>
+          </div>
+
+          <div class="notice notice--warning" role="note">
+            <strong>Importante</strong>
+            <p>
+              Esta herramienta no reemplaza al docente ni los protocolos oficiales. El
+              prototipo no usa la cámara y no debe emplearse para operar equipos reales.
+            </p>
+          </div>
+
+          <button class="button button--primary button--wide" type="button" data-go="practice">
+            Comenzar recorrido
+          </button>
+          <p class="fine-print">Duración aproximada del prototipo: 2 minutos.</p>
+        </section>
+
+        <section class="screen" data-screen="practice" hidden>
+          <button class="back-link" type="button" data-go="home">← Volver</button>
+          <p class="eyebrow">Paso 1 · Selección</p>
+          <h1 tabindex="-1">Elige una práctica</h1>
+          <p>En esta fase solo hay un equipo y una práctica habilitados.</p>
+
+          <button class="practice-card" id="practice-card" type="button" aria-pressed="false">
+            <span class="practice-card__icon" aria-hidden="true">V⎓</span>
+            <span class="practice-card__body">
+              <strong>Medición de voltaje DC</strong>
+              <small>Multímetro DT-830B · Circuito didáctico de baja tensión</small>
+              <span class="tag-row">
+                <span class="tag">Nivel inicial</span>
+                <span class="tag">5 pasos</span>
+                <span class="tag">Supervisada</span>
+              </span>
+            </span>
+            <span class="practice-card__check" aria-hidden="true">✓</span>
+          </button>
+
+          <div class="placeholder-card" aria-disabled="true">
+            <span><strong>Osciloscopio</strong><small>Próxima fase</small></span>
+            <span class="tag">Bloqueado</span>
+          </div>
+
+          <button class="button button--primary button--wide" id="practice-continue" type="button" disabled>
+            Continuar
+          </button>
+        </section>
+
+        <section class="screen" data-screen="scan" hidden>
+          <button class="back-link" type="button" data-go="practice">← Volver</button>
+          <p class="eyebrow">Paso 2 · Identificación</p>
+          <h1 tabindex="-1">Escanea el marcador del puesto</h1>
+          <p>Alinea el marcador dentro del recuadro. Esta vista simula la futura cámara WebAR.</p>
+
+          <div class="camera-stage" id="camera-stage" aria-describedby="camera-description">
+            <div class="camera-grid" aria-hidden="true"></div>
+            <div class="scan-frame" aria-hidden="true"><span>LAB·01</span></div>
+            <div class="scan-line" aria-hidden="true"></div>
+            <p class="camera-status" id="scan-status" aria-live="polite">Listo para simular el escaneo</p>
+          </div>
+          <p class="sr-only" id="camera-description">
+            Vista simulada de cámara con un marcador cuadrado en el centro. No se solicita ni se almacena video.
+          </p>
+
+          <div class="scan-result" id="scan-result" hidden>
+            <span class="status-icon" aria-hidden="true">✓</span>
+            <span><strong>Puesto LAB-01 identificado</strong><small>Guía encontrada: DT-830B · versión 1.0</small></span>
+          </div>
+
+          <div class="button-stack">
+            <button class="button button--primary" id="scan-button" type="button">Simular escaneo</button>
+            <button class="button button--secondary" id="scan-continue" type="button" disabled>Continuar</button>
+            <button class="text-button" id="scan-use-2d" type="button">No puedo usar la cámara · Ver modo 2D</button>
+          </div>
+        </section>
+
+        <section class="screen" data-screen="confirm" hidden>
+          <button class="back-link" type="button" data-go="scan">← Escanear de nuevo</button>
+          <p class="eyebrow">Paso 3 · Confirmación</p>
+          <h1 tabindex="-1">¿Coincide con tu equipo?</h1>
+          <p>La guía solo aplica al modelo indicado. La confirmación siempre la hace la persona.</p>
+
+          <article class="equipment-card">
+            <div class="equipment-thumb" aria-hidden="true">
+              <span>DT-830B</span><i></i><b></b>
+            </div>
+            <div>
+              <p class="muted-label">Equipo detectado por el marcador</p>
+              <h2>Multímetro digital DT-830B</h2>
+              <ul class="plain-list">
+                <li>Práctica: voltaje DC de baja tensión</li>
+                <li>Guía: versión 1.0 · validación pendiente</li>
+                <li>Entorno: laboratorio universitario</li>
+              </ul>
+            </div>
+          </article>
+
+          <fieldset class="choice-fieldset">
+            <legend>Compara el nombre y la distribución de controles</legend>
+            <div class="choice-grid">
+              <button class="choice-button" id="match-yes" type="button" aria-pressed="false">Sí, coincide</button>
+              <button class="choice-button" id="match-no" type="button" aria-pressed="false">No coincide</button>
+            </div>
+          </fieldset>
+
+          <div class="notice notice--danger" id="mismatch-notice" role="alert" hidden>
+            <strong>Detente y consulta</strong>
+            <p>No uses esta guía con un equipo diferente. Vuelve a escanear o solicita ayuda al docente.</p>
+          </div>
+
+          <button class="button button--primary button--wide" id="confirm-continue" type="button" disabled>
+            Preparar la práctica
+          </button>
+        </section>
+
+        <section class="screen" data-screen="checklist" hidden>
+          <button class="back-link" type="button" data-go="confirm">← Volver</button>
+          <p class="eyebrow">Paso 4 · Prevención</p>
+          <h1 tabindex="-1">Verifica antes de comenzar</h1>
+          <p>Marca cada condición solo después de comprobarla físicamente con el docente.</p>
+
+          <div class="check-progress" aria-live="polite">
+            <strong id="check-count">0 de 5 verificaciones</strong>
+            <span id="check-message">Completa todos los puntos para continuar.</span>
+          </div>
+
+          <fieldset class="checklist" id="safety-checklist">
+            <legend class="sr-only">Lista preventiva</legend>
+            <label><input type="checkbox" /> <span>El multímetro y las puntas no muestran daños visibles.</span></label>
+            <label><input type="checkbox" /> <span>La punta negra está en COM y la roja en VΩmA.</span></label>
+            <label><input type="checkbox" /> <span>El selector inicia en una escala DCV autorizada.</span></label>
+            <label><input type="checkbox" /> <span>La fuente didáctica está dentro del rango indicado por el docente.</span></label>
+            <label><input type="checkbox" /> <span>El área está seca, ordenada y el docente autorizó comenzar.</span></label>
+          </fieldset>
+
+          <div class="notice" role="note">
+            <strong>Fuera de alcance</strong>
+            <p>No medir red eléctrica, alto voltaje ni circuitos no autorizados.</p>
+          </div>
+
+          <button class="button button--primary button--wide" id="checklist-continue" type="button" disabled>
+            Iniciar guía visual
+          </button>
+        </section>
+
+        <section class="screen screen--guide" data-screen="guide" hidden>
+          <div class="guide-topline">
+            <button class="back-link" type="button" data-go="checklist">← Lista previa</button>
+            <button class="stop-button" type="button" data-go="lost">Detener</button>
+          </div>
+          <p class="eyebrow" id="guide-counter">Paso 1 de 5 · Guía visual</p>
+          <h1 tabindex="-1" id="guide-title">Identifica la escala DCV</h1>
+
+          <div class="ar-stage" id="ar-stage" aria-describedby="ar-equivalent">
+            <span class="simulation-label" id="simulation-label">AR simulada</span>
+            <div class="meter" aria-hidden="true">
+              <div class="meter__screen">0.00</div>
+              <div class="meter__scale">DCV&nbsp;&nbsp; 200m · 2000m · 20 · 200 · 1000</div>
+              <div class="meter__dial"><i></i></div>
+              <div class="meter__ports"><span>10A</span><span>COM</span><span>VΩmA</span></div>
+            </div>
+            <div class="ar-pointer" id="ar-pointer" aria-hidden="true"><i></i><span>DCV · 20 V</span></div>
+          </div>
+          <p class="sr-only" id="ar-equivalent">
+            Representación de un multímetro DT-830B. La indicación actual señala la escala de voltaje continuo DCV.
+          </p>
+
+          <article class="instruction-card">
+            <p class="muted-label">Instrucción</p>
+            <p id="guide-instruction">Ubica la zona DCV del selector y reconoce la escala indicada.</p>
+            <details>
+              <summary>¿Por qué?</summary>
+              <p id="guide-why">La función debe corresponder a voltaje continuo antes de conectar el circuito.</p>
+            </details>
+          </article>
+
+          <div class="guide-actions">
+            <button class="button button--secondary" id="guide-prev" type="button" disabled>Anterior</button>
+            <button class="button button--primary" id="guide-next" type="button">Siguiente</button>
+          </div>
+          <button class="text-button" id="simulate-loss" type="button">Simular pérdida del marcador</button>
+        </section>
+
+        <section class="screen screen--lost" data-screen="lost" hidden>
+          <p class="eyebrow eyebrow--danger">Guía pausada</p>
+          <h1 tabindex="-1">Perdimos el marcador</h1>
+          <div class="lost-visual" aria-hidden="true"><span>!</span></div>
+          <div class="notice notice--danger" role="alert">
+            <strong>No cambies conexiones</strong>
+            <p>Detén la práctica hasta recuperar la guía o recibir indicaciones del docente.</p>
+          </div>
+          <div class="button-stack">
+            <button class="button button--primary" type="button" data-go="scan">Reintentar escaneo</button>
+            <button class="button button--secondary" id="lost-use-2d" type="button">Continuar en modo 2D</button>
+            <button class="text-button" id="ask-teacher" type="button">Consultar al docente</button>
+          </div>
+          <p class="inline-feedback" id="teacher-feedback" aria-live="polite"></p>
+        </section>
+
+        <section class="screen" data-screen="quiz" hidden>
+          <button class="back-link" type="button" data-go="guide">← Repasar guía</button>
+          <p class="eyebrow">Paso 7 · Evaluación formativa</p>
+          <h1 tabindex="-1">Comprueba lo aprendido</h1>
+          <p>No certifica una competencia. Sirve para identificar conceptos que debes repasar.</p>
+
+          <form id="quiz-form" novalidate>
+            <fieldset class="question">
+              <legend>1. ¿Qué zona del selector corresponde a voltaje continuo?</legend>
+              <label><input type="radio" name="q1" value="a" /> ACA</label>
+              <label><input type="radio" name="q1" value="b" /> DCV</label>
+              <label><input type="radio" name="q1" value="c" /> Ω</label>
+            </fieldset>
+            <fieldset class="question">
+              <legend>2. ¿Dónde se conectan las puntas para esta práctica?</legend>
+              <label><input type="radio" name="q2" value="a" /> Negra en 10A y roja en COM</label>
+              <label><input type="radio" name="q2" value="b" /> Negra en COM y roja en VΩmA</label>
+              <label><input type="radio" name="q2" value="c" /> En cualquier puerto libre</label>
+            </fieldset>
+            <fieldset class="question">
+              <legend>3. ¿Qué haces si el equipo no coincide con la guía?</legend>
+              <label><input type="radio" name="q3" value="a" /> Continuar con cuidado</label>
+              <label><input type="radio" name="q3" value="b" /> Detenerse y consultar al docente</label>
+              <label><input type="radio" name="q3" value="c" /> Probar todas las escalas</label>
+            </fieldset>
+
+            <p class="form-error" id="quiz-error" role="alert" hidden>Responde las tres preguntas antes de enviar.</p>
+            <button class="button button--primary button--wide" type="submit">Enviar respuestas</button>
+          </form>
+
+          <section class="quiz-result" id="quiz-result" aria-live="polite" hidden>
+            <span class="result-icon" aria-hidden="true">✓</span>
+            <h2 id="result-title">Recorrido completado</h2>
+            <p id="result-score"></p>
+            <p id="result-detail"></p>
+            <div class="button-stack">
+              <button class="button button--primary" type="button" data-action="restart">Volver al inicio</button>
+              <button class="button button--secondary" id="repeat-quiz" type="button">Repetir evaluación</button>
+              <button class="text-button" id="report-problem" type="button">Reportar una inconsistencia</button>
+            </div>
+            <p class="inline-feedback" id="report-feedback" aria-live="polite"></p>
+          </section>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p><strong>Maqueta frontend v0.1</strong> · Cámara y realidad aumentada simuladas.</p>
+        <p>No usar para procedimientos reales ni mediciones de red eléctrica.</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

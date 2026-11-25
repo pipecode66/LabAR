@@ -1,0 +1,37 @@
+node_modules/
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+coverage/
+test-results/
+*.log
+
+# Credenciales, certificados privados y temporales del sistema.
+*.pem
+*.key
+*.pfx
+*.p12
+~$*
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Borradores y renders regenerables de revisión; conservar evidencias finales.
+docs/final/revision/*borrador_render.*
+docs/final/revision/*_pagina_*.png
+docs/final/revision/*_vista_general.png
+docs/final/revision/diagnostico/
+docs/actividad_2026-10-29/revision/

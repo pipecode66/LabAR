@@ -1,0 +1,47 @@
+PASS | Servidor/API disponible con SQLite temporal
+PASS | Bienvenida y recursos locales cargan
+PASS | Perfil y preferencias se guardan en API
+PASS | Perfil persiste al recargar
+PASS | Ruta directa de guía no permite saltar precondiciones
+PASS | Discrepancia muestra bloqueo en interfaz
+PASS | Checklist inicial bloquea su botón
+PASS | Cuatro verificaciones siguen bloqueando avance
+PASS | Cinco verificaciones habilitan avance
+PASS | Lista validada en servidor
+PASS | Progreso del paso persiste en SQLite
+PASS | Reanudación exige reconfirmación y lista
+PASS | Reanudación conserva el paso alcanzado
+PASS | Evaluación incompleta muestra aviso y no genera resultado
+PASS | Puntaje 3/3 calculado por servidor
+PASS | Historial persiste al recargar
+PASS | Reporte de inconsistencia se guarda realmente en la API
+PASS | Exportación descarga los datos propios
+PASS | Exportación incluye reporte y omite token de sesión
+PASS | Consulta de datos muestra el perfil propio
+PASS | Cancelar borrado conserva historial
+PASS | Borrar progreso elimina intentos y reportes
+PASS | Borrar progreso conserva el perfil
+PASS | Eliminar todos los datos reinicia perfil y sesión
+PASS | Fallo de conexión conserva formulario y permite reintentar
+PASS | Alias se representa como texto sin ejecutar HTML
+PASS | Formato y alto contraste se aplican y persisten
+PASS | Lector local disponible
+PASS | QR imprimible se decodifica con jsQR real
+PASS | Cámara virtual abre stream de video
+PASS | Guía RA habilitada tras detectar marcador real en cámara virtual
+PASS | Pérdida de QR real en fuente virtual pausa la guía
+PASS | Recuperación tras perder QR conserva paso en 2D
+PASS | Botón Detener pausa la ejecución
+PASS | Consulta al docente explica el mecanismo presencial
+PASS | Guía estándar desactiva personalización de forma persistente
+PASS | Modo AR bloquea confirmación antes de reconocer el marcador
+PASS | Permiso denegado muestra error y mantiene alternativa 2D
+PASS | Imagen sin QR se rechaza sin habilitar confirmación
+PASS | Carga de imagen reconoce el QR y selecciona modo 2D
+PASS | Respuestas erróneas generan 0/3 y tres temas de repaso
+PASS | Bienvenida sin desbordamiento horizontal a 320px
+PASS | Bienvenida sin desbordamiento horizontal a 390px
+PASS | Bienvenida sin desbordamiento horizontal a 768px
+PASS | Bienvenida sin desbordamiento horizontal a 1440px
+PASS | Recorrido sin errores JavaScript no controlados
+PASS: 46 comprobaciones de integración.

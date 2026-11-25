@@ -1,0 +1,316 @@
+{
+  "fecha_corte": "2026-11-01",
+  "descripcion": "Materiales históricos y código disponibles al generar la consolidación.",
+  "archivos": [
+    {
+      "ruta": "backend/app.mjs",
+      "bytes": 18320,
+      "sha256": "b8f62444b1c670638bac5c580b6585720a51a75c9a03f1831e97cf39e2ce9d96"
+    },
+    {
+      "ruta": "backend/practice.mjs",
+      "bytes": 5916,
+      "sha256": "219ec1b451ed46766368afbad2c7fedcb28ed47cf3fdc17c027d22e281577318"
+    },
+    {
+      "ruta": "backend/server.mjs",
+      "bytes": 1619,
+      "sha256": "eeef24156118f4fc514e18340dd30479c59b223cc5e998d901c2bd4e541d93d8"
+    },
+    {
+      "ruta": "backend/store.mjs",
+      "bytes": 3212,
+      "sha256": "bdae580561d415960a45647534dab08cdc13f659c1e16e6756436630b7340ce6"
+    },
+    {
+      "ruta": "docs/Actividad_29-10-2026.pdf",
+      "bytes": 722550,
+      "sha256": "b4b06e9cc4f366d0579f4be0da5781609b55cffedd78e69b84e93abb72167ee4"
+    },
+    {
+      "ruta": "docs/archivo/frontend_v0_1/app.js",
+      "bytes": 12174,
+      "sha256": "51c5c2c5977fb7ea81772291ac0743c0403e9a64f7b43c1d5c6dd0285e0a5fe1"
+    },
+    {
+      "ruta": "docs/archivo/frontend_v0_1/index.html",
+      "bytes": 15724,
+      "sha256": "993535dc6077855a39a3ce4bedc228368e379869fa4cea1386156699f920c63d"
+    },
+    {
+      "ruta": "docs/archivo/frontend_v0_1/README.md",
+      "bytes": 1140,
+      "sha256": "3766c8167d024f4f6fc6932727615d852d29b491093818ca2ec46665b558b762"
+    },
+    {
+      "ruta": "docs/archivo/frontend_v0_1/styles.css",
+      "bytes": 17055,
+      "sha256": "f7a6de5b425c8c8baa3412a4665cc60c7f56a3503376b8277ab590bc21b89c45"
+    },
+    {
+      "ruta": "docs/archivo/README.md",
+      "bytes": 853,
+      "sha256": "19b63f0c6aef340ad77e640d86549fd97346743d364dce21b86c4e8b98424503"
+    },
+    {
+      "ruta": "docs/build_labar_report.ps1",
+      "bytes": 81692,
+      "sha256": "6bdaa448927faf7d114e8caaa87d0586fa823d9564ee6a74bedee65415e17ea4"
+    },
+    {
+      "ruta": "docs/final/evidencia_final.json",
+      "bytes": 4543,
+      "sha256": "4b0d7f03d880a5c5b1e9b170d9b4f15100963f288cb9fe1d911f79a9c4f1953e"
+    },
+    {
+      "ruta": "docs/final/generar_documentacion.py",
+      "bytes": 35633,
+      "sha256": "bc361642dd5f3a79e0abe2c6e8630d0457c519bec4d782431ceda57a3c9651b4"
+    },
+    {
+      "ruta": "docs/final/informe_fuente.md",
+      "bytes": 30215,
+      "sha256": "30c157fefd0f128da9541202c8a1b959a12bbb5fe177d60bf54f3e0a21cadea5"
+    },
+    {
+      "ruta": "docs/final/manual_fuente.md",
+      "bytes": 14254,
+      "sha256": "50193f0a5cb4baae76537c23194c58fe18ea5ad22cb37f64811bc046958e11ee"
+    },
+    {
+      "ruta": "docs/Informe_Proyecto_LabAR_Seguro.docx",
+      "bytes": 59878,
+      "sha256": "1cae21a064eacba362553745f88323680c0718fc98acf84228d31f5c22a7fc45"
+    },
+    {
+      "ruta": "docs/Informe_Proyecto_LabAR_Seguro.pdf",
+      "bytes": 239190,
+      "sha256": "eef0a497695a3f7476636d84743162a3b8dab747ff48bee2f3c7a66c7d720696"
+    },
+    {
+      "ruta": "docs/Informe_Proyecto_LabAR_Seguro_UX_Personalization.docx",
+      "bytes": 63676,
+      "sha256": "f41b6e87183be76cf50dc69cabe1b6aa5a7d6e3c3990696df00421f799947256"
+    },
+    {
+      "ruta": "docs/Prompt_Stitch_LabAR_Seguro.md",
+      "bytes": 10272,
+      "sha256": "4d6332d8de393e7b2f1cf9d9e1dae6ed5093db088b31087c05d53ea3ca35252d"
+    },
+    {
+      "ruta": "docs/Proyecto_LabAR.pdf",
+      "bytes": 301661,
+      "sha256": "e6e42b934aaeb90b20e4f488db03d71050351674d05e3e49af39f094e03e1320"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/01._bienvenida_y_acceso/code.html",
+      "bytes": 18991,
+      "sha256": "ce1e3616a5efeac4d7d5f139b62ef3915071244c81e3dc730961fe32331b22fe"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/01._bienvenida_y_acceso/screen.png",
+      "bytes": 249058,
+      "sha256": "4fff4e00fd69e7edada67270ec1829dbf0a06023e91c58296612ad0ee4d1877a"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/02._perfil_y_preferencias_ux/code.html",
+      "bytes": 23838,
+      "sha256": "b41b21a73a1d63d0c79e23949c712895578fe589d20702c4039d2ece581df15f"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/02._perfil_y_preferencias_ux/screen.png",
+      "bytes": 244392,
+      "sha256": "192be4ea80e2a10e8c1b36a286977b10b8245a43645924d687721d769bdc6548"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/03._inicio_personalizado/code.html",
+      "bytes": 21878,
+      "sha256": "bdfc51cbdaafc250fc9246ac64d0a1e92d194b2a7ba6b4bc325c2cbe48fc20a2"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/03._inicio_personalizado/screen.png",
+      "bytes": 229088,
+      "sha256": "03611aa804049ce67503a6a403ba564c140a6b7e18ad9cc174e33c5913ee2ec7"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/04._detalle_de_la_pr_ctica/code.html",
+      "bytes": 26193,
+      "sha256": "0d11c6cbc8e691bce7471ec1161f36f1261e5aee0967c83240dae40dc714c263"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/04._detalle_de_la_pr_ctica/screen.png",
+      "bytes": 249860,
+      "sha256": "1268f8d1259a25f8c974607ce35976c7734d12b7285f2a81e5acd5ccdcf9199f"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/05._preparaci_n_de_c_mara/code.html",
+      "bytes": 13661,
+      "sha256": "a059131bba92efb175306e9c9e13fd883a75d5de1dffeb410277a661b03824f1"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/05._preparaci_n_de_c_mara/screen.png",
+      "bytes": 335736,
+      "sha256": "2d3925b0d863028e7995fb6cbc7a53086442deed4b931deeef7487194086b030"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/06._escaneo_y_confirmaci_n/code.html",
+      "bytes": 16293,
+      "sha256": "59e8912fc026eef30e20425c08d3ee14e67c025489491fa3d66ed6ad493b86e0"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/06._escaneo_y_confirmaci_n/screen.png",
+      "bytes": 332638,
+      "sha256": "4e924c92ce0b2ba75a77ca6a71760c61a46157adb6ca8249f14cb340a7030faf"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/07._lista_preventiva/code.html",
+      "bytes": 17819,
+      "sha256": "d12c46a6d66267794ce92d7aee756621f24a890986a064bedbbaa0ff2738210c"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/07._lista_preventiva/screen.png",
+      "bytes": 263835,
+      "sha256": "f099596b3a0e3a25a91e5b1cedf28748139ba028f0f1dc71fc0f7039411795a7"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/08._gu_a_visual_ar/code.html",
+      "bytes": 20133,
+      "sha256": "d4352c452f2c29ae74774d2341422bce52be6334a80bf6a70f7a9ca14fc2dc03"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/08._gu_a_visual_ar/screen.png",
+      "bytes": 554889,
+      "sha256": "d4fcc7f8888fcbf6c13480737b68bc0bbfed975bf539769f02df916b9250c245"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/09._pausa_y_recuperaci_n/code.html",
+      "bytes": 15526,
+      "sha256": "be70d8c0edbd269265aa5141bc9f971bc0e4cc9bcbb48e721ae5a5d7e3b3c427"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/09._pausa_y_recuperaci_n/screen.png",
+      "bytes": 272620,
+      "sha256": "3ffedfdff60719eb61cc07292bbf370feedfcb59a68aec8a0854b572850ec4e8"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/10._evaluaci_n_y_resultado/code.html",
+      "bytes": 20255,
+      "sha256": "9b03b63f6a0e9d5bc0d9f074a93fb40dcb1cc26807e3f4b848c94b34eafa8afa"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/10._evaluaci_n_y_resultado/screen.png",
+      "bytes": 281562,
+      "sha256": "ce99be20aaa4d0d448ed729e5b7b2d2e7e615af10246b08a3403b7e600e5cbed"
+    },
+    {
+      "ruta": "docs/stitch_labar_seguro_frontend_prototype/stitch_labar_seguro_frontend_prototype/labar_precision_system/DESIGN.md",
+      "bytes": 11960,
+      "sha256": "4e9fc1a0d4110d84dc91200bea22fc0b3978b9e6b11c572749e6d953607249d3"
+    },
+    {
+      "ruta": "frontend/app.js",
+      "bytes": 58300,
+      "sha256": "a795b9512c352dd5fa23296b1990cf8b016804c23a032d1644b81dd933ea2504"
+    },
+    {
+      "ruta": "frontend/assets/labar-icon.svg",
+      "bytes": 313,
+      "sha256": "2be0a75022246f8c35bec6b1b1d4ef426292909502fd0701022dff25925a73d5"
+    },
+    {
+      "ruta": "frontend/assets/marcador-labar.png",
+      "bytes": 1869,
+      "sha256": "9f41a19dc7a3a7c8c617b4463a6c0539bd7f7b8e4c4dd017888d462516225676"
+    },
+    {
+      "ruta": "frontend/assets/marcador-labar.svg",
+      "bytes": 10158,
+      "sha256": "8ef6d578543ceacbd61c71a35e696676bf6b5c8daf19ef6e26676f10f69e3829"
+    },
+    {
+      "ruta": "frontend/camera.js",
+      "bytes": 7521,
+      "sha256": "aedea5639a4140e139486ae23ba47c65c3cd376e868968639762da4f085251d1"
+    },
+    {
+      "ruta": "frontend/index.html",
+      "bytes": 4559,
+      "sha256": "c316668929cf42585d53541fa8a6adf8b152b19562b94a7169f00f2ec3921aa3"
+    },
+    {
+      "ruta": "frontend/marcador.css",
+      "bytes": 521,
+      "sha256": "79df3177d3bdda0c35547c57dd995e93617b729f789ed5cce8eb2acbdf01883b"
+    },
+    {
+      "ruta": "frontend/marcador.html",
+      "bytes": 1254,
+      "sha256": "5c351ee39a0569233c2c458cba2b5d001984fc598cddcb486fef78ee1dfc6346"
+    },
+    {
+      "ruta": "frontend/README.md",
+      "bytes": 2679,
+      "sha256": "903f2773e2b38b02ef2d73c2af71fd8a9c9a552dd12db6d7d3d0ee9dee535994"
+    },
+    {
+      "ruta": "frontend/styles.css",
+      "bytes": 27729,
+      "sha256": "a88fa05270697b5371e7392da3bef4b140eda50ada7b4ebcc80b970f5c1b4a2a"
+    },
+    {
+      "ruta": "frontend/vendor/jsQR.js",
+      "bytes": 256885,
+      "sha256": "bc40c8a15196236b2314db0856f72ca0b49980cd5413b8c852a7349f5fee0859"
+    },
+    {
+      "ruta": "frontend/vendor/jsQR.LICENSE",
+      "bytes": 11358,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+    },
+    {
+      "ruta": "frontend/vendor/README.md",
+      "bytes": 554,
+      "sha256": "a8c0fd62f24dda5a4ce92a564af5eb23b074cf484aac81c34603199129b865f3"
+    },
+    {
+      "ruta": "Informe_TECNOLOGIASEMERGENTES.pdf",
+      "bytes": 224185,
+      "sha256": "42e4ac1df74d89a391b6d72b74cb391f57520b647127a989b588a2ab1d8a175b"
+    },
+    {
+      "ruta": "package.json",
+      "bytes": 599,
+      "sha256": "cddc5c0ebc93ee72788862542a4a4badc30c781a21083886a1b50513cf301c38"
+    },
+    {
+      "ruta": "README.md",
+      "bytes": 5835,
+      "sha256": "f21f8b8687a98132c36a59d0fe778be44798219e8c3b0218762af0e544a3616c"
+    },
+    {
+      "ruta": "tests/backend.test.mjs",
+      "bytes": 27051,
+      "sha256": "2de151d9bda7d39dfd6148d4500ec5c017c95eb4b14864f64b2a9bdff35c9c2c"
+    },
+    {
+      "ruta": "tests/camera.test.mjs",
+      "bytes": 4116,
+      "sha256": "69f7ed2900a904072f4140d9592c619d93ee07ae7315932a691d225a616afce7"
+    },
+    {
+      "ruta": "tests/e2e.py",
+      "bytes": 23845,
+      "sha256": "7527958b0672922665e921d1dea6c17daf4999c5d9ae91c00690df1d92451f0d"
+    },
+    {
+      "ruta": "tests/requirements.txt",
+      "bytes": 56,
+      "sha256": "bb91d5563b5d66e5dc1e2f35ad45df880af1d73c44472a5cec2bd964ed8f207c"
+    },
+    {
+      "ruta": "tests/run_all.py",
+      "bytes": 2696,
+      "sha256": "c10752710a1cd28e83efc4fc1d37b24f707e6e3e60fd2a89bdd503ecb459ce18"
+    }
+  ]
+}

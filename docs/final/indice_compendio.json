@@ -1,0 +1,54 @@
+{
+  "documentos": [
+    {
+      "titulo": "Documentación final consolidada · 01/11/2026",
+      "ruta": "docs/final/Documentacion_Final_LabAR_Seguro.pdf",
+      "inicio_compendio": 2,
+      "paginas": 25,
+      "sha256": "66b87f69b57300b7a5c3f70f6847250e0d805af51ea96e45e7401baa62609a14",
+      "sha256_texto_normalizado": "1787d38bdf08e387bc5df50c1eedac628f38f0b36acec0f1d953a1287a3f38ed"
+    },
+    {
+      "titulo": "Manual de usuario · 01/11/2026",
+      "ruta": "docs/final/Manual_Usuario_LabAR_Seguro.pdf",
+      "inicio_compendio": 27,
+      "paginas": 15,
+      "sha256": "63ace02cefeb16a96fc302752b59a17f736a4b03adbb7a73264a26b15174e9a3",
+      "sha256_texto_normalizado": "b4b12b4cfa73ad35367389df79f2be88bec87aa292a00a42054434e8cc0b12a2"
+    },
+    {
+      "titulo": "Propuesta inicial · archivo de entrega",
+      "ruta": "Informe_TECNOLOGIASEMERGENTES.pdf",
+      "inicio_compendio": 42,
+      "paginas": 16,
+      "sha256": "42e4ac1df74d89a391b6d72b74cb391f57520b647127a989b588a2ab1d8a175b",
+      "sha256_texto_normalizado": "e251fb7d74e24310ab34a71c3ea86767edcdbf713d57b81652567dc2657f36a5"
+    },
+    {
+      "titulo": "Propuesta y enfoque · versión de trabajo",
+      "ruta": "docs/Informe_Proyecto_LabAR_Seguro.pdf",
+      "inicio_compendio": 58,
+      "paginas": 17,
+      "sha256": "eef0a497695a3f7476636d84743162a3b8dab747ff48bee2f3c7a66c7d720696",
+      "sha256_texto_normalizado": "f8aa1505b0ed9faa99c3844020cd9ea131f75cbb0ba0a931bd529077c9bb98f9"
+    },
+    {
+      "titulo": "Propuesta con personalización UX",
+      "ruta": "docs/Proyecto_LabAR.pdf",
+      "inicio_compendio": 75,
+      "paginas": 22,
+      "sha256": "e6e42b934aaeb90b20e4f488db03d71050351674d05e3e49af39f094e03e1320",
+      "sha256_texto_normalizado": "c41a808c6d89bda8b116e9d1bf3e3018331280bd2efb408633e513dc47c0ea35"
+    },
+    {
+      "titulo": "Actividad de avance · 29/10/2026",
+      "ruta": "docs/Actividad_29-10-2026.pdf",
+      "inicio_compendio": 97,
+      "paginas": 12,
+      "sha256": "b4b06e9cc4f366d0579f4be0da5781609b55cffedd78e69b84e93abb72167ee4",
+      "sha256_texto_normalizado": "723ed7167812b65ea322f16623371474048b7eb99de2e3901167885bb43ab657"
+    }
+  ],
+  "duplicados_omitidos": [],
+  "paginas": 108
+}
