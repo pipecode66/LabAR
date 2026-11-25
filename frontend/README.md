@@ -7,10 +7,13 @@ Interfaz móvil y de escritorio recreada a partir de las diez pantallas de Stitc
 La interfaz requiere la API del proyecto. Desde la raíz:
 
 ```powershell
+npm ci
 npm start
 ```
 
 Después, abrir `http://localhost:3000`. No se ejecuta mediante `file://` ni con un servidor estático independiente.
+
+Para Vercel, `npm run build` genera los recursos públicos y `api/index.mjs` atiende la API bajo el mismo dominio. `POSTGRES_URL` pertenece al backend y no se incorpora al JavaScript del navegador. La guía de esta instalación está en `docs/despliegue-supabase/`; el funcionamiento remoto debe verificarse después del despliegue.
 
 ## Funcionalidades
 

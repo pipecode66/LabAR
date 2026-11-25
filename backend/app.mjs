@@ -3,7 +3,6 @@ import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import { readFile, realpath, stat } from 'node:fs/promises';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createStore } from './store.mjs';
 import { DEFAULT_PROFILE, PRACTICE, gradeQuiz, recommendationFor } from './practice.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -81,9 +80,32 @@ function validateProfile(body, current) {
 }
 
 /** Crea un servidor sin escuchar. Las pruebas usan base temporal y puerto asignado por el SO. */
-export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), frontendDir = resolve(ROOT, 'frontend'),
+export function createApp({ databasePath, databaseUrl, store: providedStore, postgresOptions = {}, frontendDir = resolve(ROOT, 'frontend'),
   allowedOrigins = [], secureCookie = false, rateLimit = 600 } = {}) {
-  const store = createStore(databasePath);
+  let store;
+  const connectionString = databaseUrl || (!databasePath ? process.env.POSTGRES_URL || process.env.DATABASE_URL : undefined);
+  const ready = (async () => {
+    try {
+      if (providedStore) store = providedStore;
+      else if (connectionString) {
+        const { createPostgresStore } = await import('./postgres-store.mjs');
+        store = createPostgresStore(connectionString, { sslCa: process.env.POSTGRES_SSL_CA, ...postgresOptions });
+      } else {
+        if (process.env.VERCEL) fail(503, 'POSTGRES_URL_REQUIRED', 'Configura POSTGRES_URL en Vercel para conectar la base de datos.');
+        const { createStore } = await import('./store.mjs');
+        store = createStore(databasePath || resolve(ROOT, 'data/labar.sqlite'));
+      }
+      await store.ready;
+      await store.cleanup(nowIso());
+      return store;
+    } catch (error) {
+      if (error instanceof HttpError) throw error;
+      fail(503, 'DATABASE_UNAVAILABLE', 'No se pudo conectar la base de datos. Revisa la configuración privada y vuelve a intentar.');
+    }
+  })();
+  // The handler reports initialization errors; do not emit an unhandled rejection
+  // while a serverless instance is waiting for its first request.
+  ready.catch(() => {});
   const rates = new Map();
   let closed = false;
 
@@ -93,28 +115,28 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
     res.end(payload);
   }
 
-  function session(req, res) {
+  async function session(req, res) {
     const raw = req.headers.cookie?.split(';').map(part => part.trim()).find(part => part.startsWith(`${COOKIE}=`))?.slice(COOKIE.length + 1);
     const token = raw && /^[a-f0-9]{64}$/u.test(raw) ? raw : null;
     const hash = token ? hashToken(token) : null;
-    const row = hash ? store.session(hash) : null;
+    const row = hash ? await store.session(hash) : null;
     if (row && row.expires_at > nowIso()) return { hash, profile: JSON.parse(row.profile_json), createdAt: row.created_at };
-    if (row) store.deleteSession(hash);
+    if (row) await store.deleteSession(hash);
     const freshToken = randomBytes(32).toString('hex');
     const freshHash = hashToken(freshToken);
     const createdAt = nowIso();
     const expiresAt = new Date(Date.now() + SESSION_MS).toISOString();
-    store.addSession(freshHash, DEFAULT_PROFILE, createdAt, expiresAt);
+    await store.addSession(freshHash, DEFAULT_PROFILE, createdAt, expiresAt);
     res.setHeader('Set-Cookie', `${COOKIE}=${freshToken}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${SESSION_MS / 1000}${secureCookie ? '; Secure' : ''}`);
     return { hash: freshHash, profile: { ...DEFAULT_PROFILE }, createdAt };
   }
 
-  function ownedAttempt(owner, id) {
-    const attempt = store.attempt(owner, id);
+  async function ownedAttempt(owner, id) {
+    const attempt = await store.attempt(owner, id);
     if (!attempt) fail(404, 'ATTEMPT_NOT_FOUND', 'No se encontró esa ejecución en tu sesión.');
     return attempt;
   }
-  function save(owner, attempt) {
+  async function save(owner, attempt) {
     attempt.updatedAt = nowIso();
     return store.saveAttempt(owner, attempt);
   }
@@ -130,7 +152,12 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
     try { pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); }
     catch { fail(400, 'INVALID_URL', 'La dirección solicitada no es válida.'); }
     if (pathname.includes('\0') || pathname.includes('\\')) fail(400, 'INVALID_PATH', 'La ruta no es válida.');
-    if (pathname === '/api/health' && req.method === 'GET') return respond(res, 200, { status: 'ok', version: '1.0.0', storage: 'sqlite' });
+    if (pathname === '/api/health' && ['GET', 'HEAD'].includes(req.method)) {
+      await ready;
+      await store.health?.();
+      return respond(res, 200, { status: 'ok', version: '1.0.0', storage: store.kind || 'sqlite',
+        ...(store.kind === 'postgres' ? { database: 'connected' } : {}) });
+    }
 
     if (!pathname.startsWith('/api/')) {
       if (!['GET', 'HEAD'].includes(req.method)) fail(405, 'METHOD_NOT_ALLOWED', 'Método no permitido.');
@@ -152,7 +179,8 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
       return;
     }
 
-    let current = session(req, res);
+    await ready;
+    let current = await session(req, res);
     const minute = Math.floor(Date.now() / 60000);
     const rate = rates.get(current.hash);
     const count = rate?.minute === minute ? rate.count + 1 : 1;
@@ -167,43 +195,47 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
         fail(403, 'ORIGIN_REJECTED', 'La solicitud debe proceder de la misma aplicación.');
       }
       body = await readBody(req);
-      // El cuerpo puede llegar después de otras solicitudes de la misma sesión.
-      // Releer evita sobrescribir preferencias nuevas o recrear datos tras un borrado.
-      const latest = store.session(current.hash);
+    }
+
+    // A mutation is one transaction serialized by the owning session. This is
+    // necessary across independent Vercel instances, not just this Node process.
+    const execute = async () => {
+    if (MUTATIONS.has(req.method)) {
+      const latest = await store.session(current.hash);
       if (!latest || latest.expires_at <= nowIso()) {
-        if (latest) store.deleteSession(current.hash);
+        if (latest) await store.deleteSession(current.hash);
         fail(401, 'SESSION_EXPIRED', 'La sesión cambió o venció. Recarga la aplicación antes de continuar.');
       }
       current = { ...current, profile: JSON.parse(latest.profile_json) };
     }
-
+    const response = (status, payload, headers = {}) => ({ status, payload, headers });
     const history = () => store.attempts(current.hash);
     if (pathname === '/api/bootstrap' && req.method === 'GET') {
-      const all = history();
-      return respond(res, 200, { profile: current.profile, practice: PRACTICE,
+      const all = await history();
+      return response(200, { profile: current.profile, practice: PRACTICE,
         attempt: all.find(item => item.status !== 'completed') || null,
         history: all.filter(item => item.status === 'completed'),
-        recommendation: recommendationFor(current.profile, all), issues: store.issues(current.hash) });
+        recommendation: recommendationFor(current.profile, all), issues: await store.issues(current.hash) });
     }
     if (pathname === '/api/profile' && req.method === 'PUT') {
       const profile = validateProfile(body, current.profile);
-      store.updateProfile(current.hash, profile);
-      return respond(res, 200, profile);
+      await store.updateProfile(current.hash, profile);
+      return response(200, profile);
     }
-    if (pathname === '/api/history' && req.method === 'GET') return respond(res, 200, history());
-    if (pathname === '/api/export' && req.method === 'GET') return respond(res, 200, {
+    if (pathname === '/api/history' && req.method === 'GET') return response(200, await history());
+    if (pathname === '/api/export' && req.method === 'GET') return response(200, {
       exportedAt: nowIso(), project: 'LabAR Seguro', version: '1.0.0', profile: current.profile,
-      attempts: history(), issues: store.issues(current.hash),
+      attempts: await history(), issues: await store.issues(current.hash),
       privacy: 'Incluye únicamente los datos de esta sesión de navegador. No se almacenan imágenes, video ni audio.',
     }, { 'Content-Disposition': 'attachment; filename="labar-mis-datos.json"' });
     if (pathname === '/api/progress' && req.method === 'DELETE') {
-      onlyKeys(body, []); store.deleteProgress(current.hash);
-      return respond(res, 200, { deleted: true, retained: 'profile' });
+      onlyKeys(body, []); await store.deleteProgress(current.hash);
+      return response(200, { deleted: true, retained: 'profile' });
     }
     if (pathname === '/api/data' && req.method === 'DELETE') {
-      onlyKeys(body, []); store.deleteSession(current.hash);
+      onlyKeys(body, []); await store.deleteSession(current.hash);
       res.setHeader('Set-Cookie', `${COOKIE}=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secureCookie ? '; Secure' : ''}`);
-      return respond(res, 200, { deleted: true });
+      return response(200, { deleted: true });
     }
     if (pathname === '/api/issues' && req.method === 'POST') {
       onlyKeys(body, ['attemptId', 'step', 'message']);
@@ -211,26 +243,26 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
         fail(400, 'INVALID_MESSAGE', 'Describe la incidencia con entre 10 y 1000 caracteres.');
       }
       if (body.attemptId !== undefined && (typeof body.attemptId !== 'string' || !body.attemptId)) fail(400, 'INVALID_ATTEMPT', 'La ejecución indicada no es válida.');
-      if (body.attemptId) ownedAttempt(current.hash, body.attemptId);
+      if (body.attemptId) await ownedAttempt(current.hash, body.attemptId);
       if (body.step !== undefined && (!Number.isInteger(body.step) || body.step < 0 || body.step > 4)) fail(400, 'INVALID_STEP', 'El paso debe estar entre 0 y 4.');
       const issue = { id: randomUUID(), attemptId: body.attemptId || null, step: body.step ?? null,
         message: body.message.trim(), createdAt: nowIso(), status: 'recorded' };
-      return respond(res, 201, store.addIssue(current.hash, issue));
+      return response(201, await store.addIssue(current.hash, issue));
     }
     if (pathname === '/api/attempts' && req.method === 'POST') {
       onlyKeys(body, ['mode']); const mode = modeValue(body.mode);
-      const existing = history().find(item => item.status !== 'completed');
-      if (existing) return respond(res, 200, existing);
+      const existing = (await history()).find(item => item.status !== 'completed');
+      if (existing) return response(200, existing);
       const now = nowIso();
       const attempt = { id: randomUUID(), practiceId: PRACTICE.id, practiceVersion: PRACTICE.version,
         status: 'preparing', mode, equipmentConfirmed: false, checklist: [], step: 0, completedSteps: 0,
         score: null, result: null, createdAt: now, updatedAt: now, completedAt: null, pauseReason: null };
-      return respond(res, 201, store.saveAttempt(current.hash, attempt));
+      return response(201, await store.saveAttempt(current.hash, attempt));
     }
 
     const match = /^\/api\/attempts\/([a-f0-9-]{36})\/(confirm|checklist|progress|pause|resume|mode|quiz)$/u.exec(pathname);
     if (match && req.method === 'POST') {
-      const attempt = ownedAttempt(current.hash, match[1]);
+      const attempt = await ownedAttempt(current.hash, match[1]);
       const action = match[2];
       requireUnfinished(attempt);
       if (action === 'confirm') {
@@ -280,13 +312,17 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
         attempt.result = gradeQuiz(body.answers); attempt.answers = body.answers;
         attempt.score = attempt.result.score; attempt.status = 'completed'; attempt.completedAt = nowIso();
       }
-      return respond(res, 200, save(current.hash, attempt));
+      return response(200, await save(current.hash, attempt));
     }
     fail(404, 'API_NOT_FOUND', 'La operación solicitada no existe.');
+    };
+    const result = MUTATIONS.has(req.method)
+      ? await store.transaction(current.hash, execute)
+      : await execute();
+    return respond(res, result.status, result.payload, result.headers);
   }
 
-  const server = createServer((req, res) => {
-    route(req, res).catch(error => {
+  const handler = (req, res) => route(req, res).catch(error => {
       if (res.headersSent) { res.end(); return; }
       const status = error instanceof HttpError ? error.status : 500;
       respond(res, status, { error: {
@@ -294,18 +330,20 @@ export function createApp({ databasePath = resolve(ROOT, 'data/labar.sqlite'), f
         message: error instanceof HttpError ? error.message : 'No fue posible completar la operación. Reintenta más tarde.',
       } });
     });
-  });
+  const server = createServer(handler);
   server.requestTimeout = 30000;
   server.headersTimeout = 15000;
   server.keepAliveTimeout = 5000;
-  store.cleanup(nowIso());
   return {
     server,
+    handler,
+    ready,
     close: async () => {
       if (closed) return;
       closed = true;
       if (server.listening) await new Promise((resolveClose, reject) => server.close(error => error ? reject(error) : resolveClose()));
-      store.close();
+      await ready.catch(() => {});
+      await store?.close();
     },
   };
 }

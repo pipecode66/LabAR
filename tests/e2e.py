@@ -28,7 +28,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'docs' / 'final' / 'evidencias'
+OUT = Path(os.environ.get('LABAR_E2E_OUTPUT', str(ROOT / 'docs' / 'final' / 'evidencias'))).resolve()
 OUT.mkdir(parents=True, exist_ok=True)
 results = []
 shots = []
@@ -150,10 +150,10 @@ work = Path(temporary.name)
 with socket.socket() as binding:
     binding.bind(('127.0.0.1', 0))
     port = binding.getsockname()[1]
-origin = f'http://127.0.0.1:{port}'
+origin = os.environ.get('LABAR_E2E_URL', f'http://127.0.0.1:{port}').rstrip('/')
 env = {**os.environ, 'HOST':'127.0.0.1','PORT':str(port),'DB_PATH':str(work/'e2e.sqlite')}
 server_log = (work/'server.log').open('w', encoding='utf-8')
-server = subprocess.Popen(['node','backend/server.mjs'], cwd=ROOT, env=env, stdout=server_log, stderr=subprocess.STDOUT)
+server = None if os.environ.get('LABAR_E2E_URL') else subprocess.Popen(['node','backend/server.mjs'], cwd=ROOT, env=env, stdout=server_log, stderr=subprocess.STDOUT)
 failed = None
 try:
     for _ in range(80):
@@ -162,7 +162,7 @@ try:
                 if response.status == 200: break
         except Exception: time.sleep(.1)
     else: raise RuntimeError('El servidor no inició: ' + (work/'server.log').read_text(encoding='utf-8'))
-    record('Servidor/API disponible con SQLite temporal')
+    record('Servidor/API disponible', detail='Servidor externo' if server is None else 'SQLite temporal')
     driver = new_driver(work)
     driver.get(origin)
     wait_page(driver, 'welcome')
@@ -388,16 +388,17 @@ finally:
     for browser in drivers:
         try: browser.quit()
         except Exception: pass
-    server.terminate()
-    try: server.wait(timeout=10)
-    except subprocess.TimeoutExpired: server.kill(); server.wait()
+    if server is not None:
+        server.terminate()
+        try: server.wait(timeout=10)
+        except subprocess.TimeoutExpired: server.kill(); server.wait()
     server_log.close()
     summary = {'date':datetime.now().astimezone().isoformat(),'passed':sum(r['passed'] for r in results),
         'failed':sum(not r['passed'] for r in results) + int(bool(failed) and not any(not r['passed'] for r in results)),
         'error':failed,'results':results,'screenshots':shots,
         'camera':{'physicalDeviceTested':False,'imageMarkerTested':any(r['name'].startswith('QR imprimible') and r['passed'] for r in results),
                   'fakeCameraTested':any(r['name'].startswith('Guía RA habilitada') and r['passed'] for r in results)},
-        'scope':['Edge emulación móvil y escritorio','API real con SQLite temporal','marcador QR y cámara virtual; sin hardware físico']}
+        'scope':['Edge emulación móvil y escritorio', 'API externa: '+origin if server is None else 'API real con SQLite temporal','marcador QR y cámara virtual; sin hardware físico']}
     (OUT.parent/'resultado_e2e.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
     (OUT.parent/'resultado_e2e.txt').write_text('\n'.join(('PASS' if r['passed'] else 'FAIL')+' | '+r['name'] for r in results) + ('\nERROR: '+failed if failed else '')+'\n',encoding='utf-8')
     temporary.cleanup()

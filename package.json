@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Guía educativa WebAR personalizada con API local y persistencia SQLite.",
-  "engines": { "node": ">=24.0.0" },
+  "description": "Guía educativa WebAR con API, SQLite local y PostgreSQL de Supabase en Vercel.",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "start": "node backend/server.mjs",
+    "build": "node scripts/build-vercel.mjs",
+    "db:migrate": "node backend/migrate.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:backend": "node --test tests/backend.test.mjs",
-    "check": "node --check backend/app.mjs && node --check backend/server.mjs && node --check backend/store.mjs && node --check backend/practice.mjs && node --check frontend/app.js && node --check frontend/camera.js"
+    "check": "node --check backend/app.mjs && node --check backend/server.mjs && node --check backend/store.mjs && node --check backend/postgres-store.mjs && node --check backend/practice.mjs && node --check frontend/app.js && node --check frontend/camera.js && node --check api/index.mjs && node --check scripts/build-vercel.mjs"
+  },
+  "dependencies": {
+    "pg": "8.23.1"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "result": "APROBADO",
+  "documents": [
+    {
+      "file": "Addendum_Despliegue_Vercel_Supabase.pdf",
+      "pages": 7,
+      "bookmarks": 11,
+      "sha256": "c3f7ffa8fc0ff1eef684eba96a24f7e3586c690511171b238d59971a232f26d4"
+    },
+    {
+      "file": "Modelo_Base_de_Datos_LabAR_Seguro.pdf",
+      "pages": 6,
+      "bookmarks": 9,
+      "sha256": "5a823e3fae3de726052d1d2dbfe79c437a80bf8e1ff4413172f65724439dd123"
+    }
+  ]
+}

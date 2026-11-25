@@ -20,14 +20,22 @@ if (process.env.SECURE_COOKIE !== undefined && !['true', 'false'].includes(proce
 }
 const app = createApp({
   ...(process.env.DB_PATH ? { databasePath: resolve(process.env.DB_PATH) } : {}),
+  ...(process.env.POSTGRES_URL || process.env.DATABASE_URL ? { databaseUrl: process.env.POSTGRES_URL || process.env.DATABASE_URL } : {}),
   allowedOrigins: publicOrigin ? [publicOrigin] : [],
   secureCookie: process.env.SECURE_COOKIE !== undefined ? process.env.SECURE_COOKIE === 'true' : publicOrigin?.startsWith('https:') || false,
 });
-app.server.listen(port, host, () => {
-  const actualPort = app.server.address().port;
-  console.log(`LabAR Seguro: http://${host}:${actualPort}`);
-  console.log('Datos: SQLite local. Pulsa Ctrl+C para detener.');
-});
+try {
+  await app.ready;
+  app.server.listen(port, host, () => {
+    const actualPort = app.server.address().port;
+    console.log(`LabAR Seguro: http://${host}:${actualPort}`);
+    console.log(`Datos: ${process.env.POSTGRES_URL || process.env.DATABASE_URL ? 'PostgreSQL administrado' : 'SQLite local'}. Pulsa Ctrl+C para detener.`);
+  });
+} catch {
+  console.error('No fue posible iniciar LabAR. Revisa la configuración privada de la base de datos y TLS.');
+  await app.close();
+  process.exitCode = 1;
+}
 async function stop() { await app.close(); process.exit(0); }
 process.once('SIGINT', stop);
 process.once('SIGTERM', stop);
