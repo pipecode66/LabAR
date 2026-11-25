@@ -100,7 +100,9 @@ export function createApp({ databasePath, databaseUrl, store: providedStore, pos
       return store;
     } catch (error) {
       if (error instanceof HttpError) throw error;
-      fail(503, 'DATABASE_UNAVAILABLE', 'No se pudo conectar la base de datos. Revisa la configuración privada y vuelve a intentar.');
+      const failure = new HttpError(503, 'DATABASE_UNAVAILABLE', 'No se pudo conectar la base de datos. Revisa la configuración privada y vuelve a intentar.');
+      failure.cause = error;
+      throw failure;
     }
   })();
   // The handler reports initialization errors; do not emit an unhandled rejection

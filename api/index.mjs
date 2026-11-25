@@ -51,13 +51,17 @@ export function createVercelHandler({ env = process.env, appFactory = createApp 
       if (!app) app = appFactory(vercelOptions(env));
       await app.ready;
       await app.handler(req, res);
-    } catch {
+    } catch (error) {
       const failedApp = app; app = null;
       try { await failedApp?.close(); } catch { /* No exponer detalles de conexión. */ }
       if (res.headersSent) { res.end(); return; }
       res.writeHead(503, { 'Content-Type': 'application/json; charset=utf-8', 'Retry-After': '10' });
+      const code = error?.cause?.code || error?.code;
+      const safeCodes = ['SELF_SIGNED_CERT_IN_CHAIN', 'DEPTH_ZERO_SELF_SIGNED_CERT', 'UNABLE_TO_VERIFY_LEAF_SIGNATURE', 'CERT_HAS_EXPIRED', 'ENOTFOUND', 'ENETUNREACH', 'ECONNREFUSED', 'ETIMEDOUT', 'ENOENT'];
+      const diagnostic = safeCodes.includes(code) || /^[0-9A-Z]{5}$/.test(code || '') ? code : 'CONNECTION_CONFIGURATION';
       res.end(JSON.stringify({ error: {
         code: 'DATABASE_UNAVAILABLE',
+        diagnostic,
         message: 'No se pudo conectar con la base de datos. Revisa POSTGRES_URL en Vercel y que Supabase esté activo.',
       } }));
     }
