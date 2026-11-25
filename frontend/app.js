@@ -331,7 +331,7 @@ document.addEventListener('submit', async event => {
   event.preventDefault(); if (state.busy) return;
   if (!form.checkValidity()) { form.reportValidity(); return; }
   const control = form.querySelector('[type="submit"]');
-  state.busy = true; control.disabled = true;
+  state.busy = true; control.disabled = true; control.setAttribute('aria-busy', 'true');
   try {
     if (form.id === 'profile-form') {
       const data = new FormData(form); const profile = { displayName: data.get('displayName').trim(), experience: data.get('experience'), format: data.get('format') };
@@ -353,7 +353,7 @@ document.addEventListener('submit', async event => {
       await api('/issues', 'POST', payload); $('#detail-dialog').close(); await refreshData(); toast('Reporte guardado. Puedes consultarlo en Privacidad.');
     }
   } catch (error) { showError(error); }
-  finally { state.busy = false; if (control.isConnected) control.disabled = false; }
+  finally { state.busy = false; if (control.isConnected) { control.disabled = false; control.removeAttribute('aria-busy'); } }
 });
 $('#header-preferences').addEventListener('click', () => { if (!state.data) return; state.returnFromProfile = state.page === 'welcome' ? 'welcome' : 'dashboard'; go('profile'); });
 $('.skip-link').addEventListener('click', event => { event.preventDefault(); $('#main-content').focus(); });

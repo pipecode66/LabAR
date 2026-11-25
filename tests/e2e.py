@@ -88,7 +88,7 @@ def click(driver, selector):
         except (StaleElementReferenceException,ElementClickInterceptedException,NoSuchElementException):
             return False
     WebDriverWait(driver,12).until(perform)
-    WebDriverWait(driver,12).until(lambda browser: browser.execute_script('return !document.querySelector("#app [aria-busy=\\"true\\"]")'))
+    WebDriverWait(driver,20).until(lambda browser: browser.execute_script('return !document.querySelector("[aria-busy=\\"true\\"]")'))
 
 
 def fill(driver, selector, text):
@@ -205,7 +205,7 @@ try:
     record('Lista validada en servidor', api(driver)['data']['attempt']['status']=='active')
     click(driver, '#guide-next')
     WebDriverWait(driver, 8).until(lambda d: api(d)['data']['attempt']['step']==1)
-    record('Progreso del paso persiste en SQLite')
+    record('Progreso del paso persiste en la base de datos')
     driver.refresh()
     wait_page(driver, 'dashboard')
     click(driver, '#resume-attempt')

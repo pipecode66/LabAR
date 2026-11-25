@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { X509Certificate } from 'node:crypto';
 import { createPostgresStore, postgresPoolConfig } from '../backend/postgres-store.mjs';
 
 const testUrl = 'postgresql://labar_test:private-sentinel@example.invalid:6543/postgres?sslmode=require';
@@ -47,6 +48,21 @@ test('PostgreSQL: rechaza URLs y tamaños de pool inválidos sin revelar contras
     assert.throws(() => postgresPoolConfig(value), error => !error.message.includes('private-sentinel') && /POSTGRES_URL/.test(error.message));
   }
   for (const maxConnections of [0, 11, 1.5, '3']) assert.throws(() => postgresPoolConfig(testUrl, { maxConnections }), /pool/);
+});
+
+test('PostgreSQL: CA oficial solo para hosts Supabase y CA personalizada tiene prioridad', async () => {
+  const certificate = await readFile(new URL('../database/supabase-ca.crt', import.meta.url), 'utf8');
+  const x509 = new X509Certificate(certificate);
+  assert.equal(x509.fingerprint256.replaceAll(':', '').toLowerCase(), '807025ad50d4ed219d2c9c7d299c004f824eb00cf7f65afef607d07b72e6cafa');
+  for (const host of ['elzvijaeofempysspsvr.supabase.co', 'aws-0-us-east-1.pooler.supabase.com']) {
+    const config = postgresPoolConfig(`postgresql://test@${host}/postgres?sslmode=require`);
+    assert.equal(config.ssl.ca, certificate);
+    assert.equal(config.ssl.rejectUnauthorized, true);
+    assert.deepEqual(postgresPoolConfig(`postgresql://test@${host}/postgres`, { sslCa: 'CA personalizada' }).ssl, { rejectUnauthorized: true, ca: 'CA personalizada' });
+  }
+  for (const host of ['example.invalid', '127.0.0.1', 'supabase.co.example.invalid', 'evil-supabase.co', 'evilpooler.supabase.com']) {
+    assert.equal(postgresPoolConfig(`postgresql://test@${host}/postgres`).ssl.ca, undefined);
+  }
 });
 
 test('PostgreSQL: esquema incluye relaciones, índice único de ejecución abierta y RLS', async () => {
