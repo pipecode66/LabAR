@@ -1,5 +1,6 @@
 import { AsyncLocalStorage } from 'node:async_hooks';
 import { readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import pg from 'pg';
 
 const { Pool } = pg;
@@ -20,9 +21,11 @@ export function postgresPoolConfig(connectionString, { sslCa, maxConnections = 3
   // pg-connection-string puede sobrescribir ssl al leer estos parámetros.
   // La política es TLS con validación de certificado, también con sslmode=require.
   for (const name of ['sslmode', 'sslcert', 'sslkey', 'sslrootcert', 'ssl', 'uselibpqcompat']) parsed.searchParams.delete(name);
+  const supabaseHost = /\.(?:supabase\.co|pooler\.supabase\.com)$/i.test(parsed.hostname);
+  const certificate = sslCa || (supabaseHost ? readFileSync(new URL('../database/supabase-ca.crt', import.meta.url), 'utf8') : undefined);
   return {
     connectionString: parsed.toString(),
-    ssl: { rejectUnauthorized: true, ...(sslCa ? { ca: sslCa } : {}) },
+    ssl: { rejectUnauthorized: true, ...(certificate ? { ca: certificate } : {}) },
     max: maxConnections, connectionTimeoutMillis: 10000, idleTimeoutMillis: 10000,
     allowExitOnIdle: true, application_name: 'labar-seguro',
   };

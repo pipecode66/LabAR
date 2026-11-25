@@ -22,6 +22,7 @@ export async function buildVercel({ projectRoot = ROOT, commit = process.env.VER
   await cp(source, output, { recursive: true, filter: async path => {
     const entry = await lstat(path);
     if (entry.isSymbolicLink()) throw new Error('No se publican enlaces simbólicos.');
+    if (path !== source && basename(path).startsWith('.')) return false;
     if (entry.isDirectory()) return true;
     return !basename(path).startsWith('.') && EXTENSIONS.has(extname(path).toLowerCase());
   } });
