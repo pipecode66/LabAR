@@ -11,3 +11,11 @@
 frontend/vendor/** linguist-vendored
 docs/** linguist-documentation
 tests/fixtures/** linguist-generated
+
+# Resultados reproducibles con saltos de línea uniformes.
+docs/despliegue-supabase/*.md text eol=lf
+docs/despliegue-supabase/*.json text eol=lf
+docs/despliegue-supabase/*.xml text eol=lf
+docs/despliegue-supabase/*.txt text eol=lf
+docs/despliegue-supabase/*.py text eol=lf
+docs/despliegue-supabase/*.mjs text eol=lf

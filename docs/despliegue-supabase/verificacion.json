@@ -1,0 +1,54 @@
+{
+  "date": "25/11/2026",
+  "checkedAt": "2026-11-25T19:45:55.969Z",
+  "suites": [
+    {
+      "name": "Node: SQLite, cámara, PostgreSQL real TLS y Vercel",
+      "command": "npm test",
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Navegador Edge contra Vercel y Supabase",
+      "command": "LABAR_E2E_URL=https://labar-theta.vercel.app python tests/e2e.py",
+      "passed": 46,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "API en producción con sesiones propias",
+      "command": "node tests/production-smoke.mjs https://labar-theta.vercel.app",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "production": {
+    "url": "https://labar-theta.vercel.app",
+    "checked": true,
+    "status": 200,
+    "healthStatus": 200,
+    "databaseConnected": true,
+    "health": {
+      "status": "ok",
+      "version": "1.0.0",
+      "storage": "postgres",
+      "database": "connected"
+    },
+    "build": {
+      "project": "LabAR Seguro",
+      "version": "1.0.0",
+      "commit": "54a827ff4629f4035421d0d57b423f8c736ee464",
+      "builtAt": "2026-11-25T19:42:39.774Z"
+    }
+  },
+  "notes": [
+    "Total: 113 comprobaciones aprobadas; cero fallos en las ejecuciones finales. Sintaxis y compilación verificadas mediante npm run check y npm run build.",
+    "Las 57 pruebas Node incluyen siete pruebas contra PostgreSQL 17 real temporal, con TLS validado; no utilizan la base remota.",
+    "Las 46 comprobaciones de navegador y diez de API utilizaron el despliegue real de Vercel conectado a Supabase. Las sesiones de la prueba adicional de API se eliminaron al finalizar.",
+    "El 404 inicial se corrigió con la salida public y la función API. El primer 503 de base remota se resolvió incorporando la autoridad pública oficial de Supabase, sin desactivar la validación TLS.",
+    "La primera ejecución del navegador detectó una espera insuficiente durante el guardado de un reporte. Se añadió aria-busy a los formularios y la espera de automatización; el recorrido final completo aprobó 46/46.",
+    "Reconocimiento QR y video comprobados con cámara virtual. No se afirma validación con cámara física ni certificación de seguridad eléctrica."
+  ]
+}

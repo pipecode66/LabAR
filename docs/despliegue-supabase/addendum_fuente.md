@@ -79,6 +79,8 @@ El esquema activa Row Level Security en las tres tablas y no proporciona políti
 
 La conexión utiliza TLS con validación de certificado. No se utiliza rejectUnauthorized=false como solución de conexión. El pool predeterminado contiene un máximo de tres conexiones por instancia y la aplicación no configura sentencias preparadas con nombre, para adecuarse al pooler transaccional.
 
+Para los hosts oficiales de Supabase se incluye la autoridad pública Supabase Root 2021 CA en `database/supabase-ca.crt`, descargada mediante HTTPS desde https://supabase-downloads.s3.amazonaws.com/prod/ssl/prod-ca-2021.crt. Su huella SHA-256 es `807025ad50d4ed219d2c9c7d299c004f824eb00cf7f65afef607d07b72e6cafa` y vence el 26 de abril de 2031. Este certificado es público y no contiene contraseñas ni claves privadas. `POSTGRES_SSL_CA` permite sustituirlo si el proveedor cambia su autoridad. Los demás servidores conservan la validación de las autoridades predeterminadas de Node, salvo configuración explícita.
+
 Los tokens de sesión se generan aleatoriamente y solo se guarda su hash. Una sesión continúa representando un navegador, no una cuenta institucional. La integración de Supabase en esta etapa añade persistencia remota; no incorpora por sí sola registro de estudiantes, inicio de sesión institucional o recuperación entre dispositivos.
 
 ## 7. Puesta en marcha y comprobación
@@ -138,3 +140,21 @@ Referencias oficiales consultadas para esta adaptación:
 - Supabase. Project Pausing. https://supabase.com/docs/guides/platform/free-project-pausing
 - Vercel. Static Configuration with vercel.json. https://vercel.com/docs/project-configuration/vercel-json
 - Vercel. Node.js Functions. https://vercel.com/docs/functions/runtimes/node-js
+
+## 12. Evidencias del despliegue y del desarrollo
+
+Las siguientes capturas proceden del recorrido automatizado sobre https://labar-theta.vercel.app con PostgreSQL remoto. Los resultados detallados se conservan en `resultado_e2e.json`, `resultado_produccion.json` y `resultado_node.xml`. La cámara utilizada en la automatización es virtual; estas capturas no demuestran una prueba con cámara física.
+
+![Inicio publicado: práctica y preferencias recuperadas desde la API.](evidencias/03_inicio.png)
+
+![Resultado de la práctica: evaluación calculada por la API y guardada en Supabase.](evidencias/07_resultado.png)
+
+![Privacidad: exportación y eliminación de los datos de la sesión.](evidencias/09_privacidad.png)
+
+![Guía sobre video con marcador QR reconocido mediante una cámara virtual.](evidencias/11_guia_ra.png)
+
+Las dos imágenes de código siguientes son reproducciones legibles de archivos reales del repositorio, con ruta, numeración de líneas y hash SHA-256. No son capturas de un editor ni contienen credenciales.
+
+![Código de persistencia PostgreSQL: TLS validado, autoridad de Supabase y pool limitado.](evidencias/15_codigo_postgres.png)
+
+![Código del adaptador de Vercel: reutilización de la aplicación y errores sin credenciales.](evidencias/16_codigo_vercel.png)

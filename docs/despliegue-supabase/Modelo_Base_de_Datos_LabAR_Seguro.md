@@ -86,6 +86,28 @@ El script database/schema.sqlite.sql conserva la alternativa local. Los adaptado
 
 ## 9. Estado de comprobación
 
-Al generar este documento no se había incorporado el registro final de las nuevas pruebas y de la conexión en producción. El estado de verificación permanece pendiente. La presencia del código, el esquema o las variables indicadas por el usuario no se presenta como una prueba de conexión remota.
+Fecha del registro: 25/11/2026.
+
+| Suite | Comando | Aprobadas | Fallidas | Omitidas |
+| --- | --- | --- | --- | --- |
+| Node: SQLite, cámara, PostgreSQL real TLS y Vercel | npm test | 57 | 0 | 0 |
+| Navegador Edge contra Vercel y Supabase | LABAR_E2E_URL=https://labar-theta.vercel.app python tests/e2e.py | 46 | 0 | 0 |
+| API en producción con sesiones propias | node tests/production-smoke.mjs https://labar-theta.vercel.app | 10 | 0 | 0 |
+
+Sitio comprobado: https://labar-theta.vercel.app.
+Estado HTTP registrado: 200.
+Conexión de base remota confirmada por la comprobación: sí.
+
+Total: 113 comprobaciones aprobadas; cero fallos en las ejecuciones finales. Sintaxis y compilación verificadas mediante npm run check y npm run build.
+
+Las 57 pruebas Node incluyen siete pruebas contra PostgreSQL 17 real temporal, con TLS validado; no utilizan la base remota.
+
+Las 46 comprobaciones de navegador y diez de API utilizaron el despliegue real de Vercel conectado a Supabase. Las sesiones de la prueba adicional de API se eliminaron al finalizar.
+
+El 404 inicial se corrigió con la salida public y la función API. El primer 503 de base remota se resolvió incorporando la autoridad pública oficial de Supabase, sin desactivar la validación TLS.
+
+La primera ejecución del navegador detectó una espera insuficiente durante el guardado de un reporte. Se añadió aria-busy a los formularios y la espera de automatización; el recorrido final completo aprobó 46/46.
+
+Reconocimiento QR y video comprobados con cámara virtual. No se afirma validación con cámara física ni certificación de seguridad eléctrica.
 
 El código del esquema es la fuente de verdad para nombres, tipos y restricciones. Cualquier cambio posterior del esquema debe acompañarse de una migración explícita y una actualización de este diccionario; CREATE TABLE IF NOT EXISTS no sustituye un historial de migraciones de versiones futuras.

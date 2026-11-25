@@ -22,7 +22,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import BaseDocTemplate, Frame, PageBreak, PageTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import BaseDocTemplate, Frame, PageBreak, PageTemplate, Paragraph, Spacer, Table, TableStyle, Image
 from reportlab.platypus.tableofcontents import TableOfContents
 
 BASE = Path(__file__).resolve().parent
@@ -43,6 +43,10 @@ def read_blocks(markdown):
         line = lines[i]
         if not line.strip():
             i += 1
+            continue
+        picture = re.match(r'^!\[(.*?)\]\((.*?)\)$', line)
+        if picture:
+            yield ('image', picture[1], picture[2]); i += 1
             continue
         if line.startswith('```'):
             code = []
@@ -174,6 +178,12 @@ def make_pdf(markdown, path, title):
                 heading = Paragraph(ptext(text), s['h1'] if level == 2 else s['h2'])
                 heading.document_heading = level == 2
                 story.append(heading)
+        elif block[0] == 'image':
+            image = Image(str(BASE / block[2]))
+            scale = min(WIDTH/image.imageWidth, 510/image.imageHeight)
+            image.drawWidth = image.imageWidth*scale
+            image.drawHeight = image.imageHeight*scale
+            story += [image, Paragraph(ptext(block[1]), s['body']), Spacer(1, 10)]
         elif block[0] == 'paragraph': story.append(Paragraph(ptext(block[1]), s['body']))
         elif block[0] == 'list': story.append(Paragraph('• ' + ptext(block[1]), s['list']))
         elif block[0] == 'code': story.append(Paragraph(escape(block[1]).replace('\n', '<br/>'), s['code']))
@@ -231,6 +241,12 @@ def make_docx(markdown, path, title):
                 if not cover_done:
                     doc.add_page_break(); doc.add_paragraph('Contenido','Title'); field(doc.add_paragraph(),'TOC \\o "1-2" \\h \\z \\u'); doc.add_page_break(); cover_done=True
                 doc.add_heading(text,level=min(2,level-1))
+        elif kind=='image':
+            from PIL import Image as PILImage
+            with PILImage.open(BASE / block[2]) as picture:
+                width, height = picture.size
+            doc.add_picture(str(BASE / block[2]), width=Cm(min(17.4, 18*width/height)))
+            doc.add_paragraph(block[1])
         elif kind=='paragraph': add_runs(doc.add_paragraph(),block[1])
         elif kind=='list': add_runs(doc.add_paragraph(style='List Bullet'),block[1])
         elif kind=='code':
@@ -256,10 +272,11 @@ def main():
     for source,name,title in [
         ('addendum_fuente.md','Addendum_Despliegue_Vercel_Supabase','Addendum técnico: Vercel y Supabase'),
         ('modelo_fuente.md','Modelo_Base_de_Datos_LabAR_Seguro','Modelo físico de base de datos'),
+        ('manual_fuente.md','Manual_Usuario_Actualizado_LabAR_Seguro','Manual de usuario actualizado'),
     ]:
         text=(BASE/source).read_text(encoding='utf-8').replace('{{RESULTADOS}}',results)
         assert '{{' not in text
-        (BASE/(name+'.md')).write_text(text,encoding='utf-8')
+        (BASE/(name+'.md')).write_text(text,encoding='utf-8',newline='\n')
         make_pdf(text,BASE/(name+'.pdf'),title)
         make_docx(text,BASE/(name+'.docx'),title)
         with pymupdf.open(BASE/(name+'.pdf')) as pdf:
@@ -268,7 +285,25 @@ def main():
                     assert word[0]>=0 and word[1]>=0 and word[2]<=page.rect.width+.5 and word[3]<=page.rect.height+.5,(name,i+1,word)
             report.append({'file':name+'.pdf','pages':len(pdf),'bookmarks':len(pdf.get_toc()),'sha256':hashlib.sha256((BASE/(name+'.pdf')).read_bytes()).hexdigest()})
         with ZipFile(BASE/(name+'.docx')) as archive: assert archive.testzip() is None
-    (BASE/'verificacion_documentos.json').write_text(json.dumps({'result':'APROBADO','documents':report},ensure_ascii=False,indent=2),encoding='utf-8')
+    (BASE/'verificacion_documentos.json').write_text(json.dumps({'result':'APROBADO','documents':report},ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
+    combined = pymupdf.open()
+    bookmarks = []
+    for name, title in [
+        ('Addendum_Despliegue_Vercel_Supabase.pdf', 'Actualización técnica y evidencias — 25/11/2026'),
+        ('Modelo_Base_de_Datos_LabAR_Seguro.pdf', 'Modelo físico de PostgreSQL'),
+        ('Manual_Usuario_Actualizado_LabAR_Seguro.pdf', 'Manual de usuario de la aplicación publicada'),
+        ('../final/Compendio_Documental_LabAR_Seguro.pdf', 'Recopilación histórica — corte 01/11/2026'),
+    ]:
+        with pymupdf.open(BASE/name) as source:
+            offset = len(combined)
+            bookmarks.append([1,title,offset+1])
+            bookmarks.extend([[level+1,label,page+offset] for level,label,page in source.get_toc() if page>0])
+            combined.insert_pdf(source)
+    combined.set_toc(bookmarks)
+    combined.set_metadata({'title':'LabAR Seguro — Compendio final actualizado', 'author':AUTHOR,
+                           'subject':'Entrega histórica, Supabase, Vercel, pruebas y manual actualizado'})
+    combined.save(BASE/'Compendio_Final_Actualizado_LabAR_Seguro.pdf',garbage=4,deflate=True)
+    combined.close()
     print(json.dumps(report,ensure_ascii=False,indent=2))
 
 

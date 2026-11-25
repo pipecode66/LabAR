@@ -2,6 +2,18 @@
 
 Actualización documental del 25 de noviembre de 2026. Los documentos de `docs/final/` conservan el corte anterior del proyecto y sus resultados históricos.
 
+## Entrega comprobada
+
+Aplicación publicada: https://labar-theta.vercel.app. La comprobación de `/api/health` devolvió HTTP 200 y `storage: postgres`, `database: connected` el 25/11/2026. Las ejecuciones finales aprobaron 57 pruebas Node, 46 comprobaciones de navegador contra el sitio publicado y 10 comprobaciones adicionales de API en producción: 113 en total, sin fallos ni omisiones.
+
+- `Compendio_Final_Actualizado_LabAR_Seguro.pdf`: recopilación de 135 páginas con actualización técnica, evidencias, modelo de datos, manual nuevo y documentos históricos.
+- `Addendum_Despliegue_Vercel_Supabase.pdf` y `.docx`: cambios técnicos y capturas incorporadas al informe.
+- `Manual_Usuario_Actualizado_LabAR_Seguro.pdf` y `.docx`: instrucciones para usar la dirección pública.
+- `Modelo_Base_de_Datos_LabAR_Seguro.pdf` y `.docx`: modelo físico y diccionario de datos.
+- `verificacion.json`, `resultado_node.xml`, `resultado_e2e.json` y `resultado_produccion.json`: resultados verificables de las pruebas.
+
+El reconocimiento QR y el video se comprobaron con cámara virtual. La cámara física y el procedimiento eléctrico siguen requiriendo revisión presencial.
+
 ## Entregables de esta actualización
 
 - `addendum_fuente.md`: explicación de la adaptación, operación, despliegue y alcance de las nuevas verificaciones.

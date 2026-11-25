@@ -3,15 +3,21 @@
   "documents": [
     {
       "file": "Addendum_Despliegue_Vercel_Supabase.pdf",
-      "pages": 7,
-      "bookmarks": 11,
-      "sha256": "c3f7ffa8fc0ff1eef684eba96a24f7e3586c690511171b238d59971a232f26d4"
+      "pages": 12,
+      "bookmarks": 12,
+      "sha256": "9b0182b84bbf55235446613dfd8e2d211c56ea0ead8de6e761f418ccff41d766"
     },
     {
       "file": "Modelo_Base_de_Datos_LabAR_Seguro.pdf",
       "pages": 6,
       "bookmarks": 9,
-      "sha256": "5a823e3fae3de726052d1d2dbfe79c437a80bf8e1ff4413172f65724439dd123"
+      "sha256": "9a1d0faa00a2d124d6fff61de84f71bcad1b2eadc34f447c8c31e9e5c5b0177b"
+    },
+    {
+      "file": "Manual_Usuario_Actualizado_LabAR_Seguro.pdf",
+      "pages": 9,
+      "bookmarks": 9,
+      "sha256": "beed50052d5cf569f8ea5d99c548d58f94a876870f67f4b06ad2e1360446c4db"
     }
   ]
 }
