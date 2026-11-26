@@ -1,6 +1,6 @@
 # LabAR Seguro
 
-Aplicación publicada: **https://labar-theta.vercel.app**. Supabase conectado y comprobado el 25/11/2026. La actualización final, el manual y las evidencias de las 113 comprobaciones aprobadas están en [docs/despliegue-supabase](docs/despliegue-supabase/README.md).
+Aplicación publicada: **https://labarfesc.vercel.app**. Corrección del dominio de acceso y de las solicitudes móviles: 26/11/2026. La documentación del corte anterior y sus 113 comprobaciones se conserva en [docs/despliegue-supabase](docs/despliegue-supabase/README.md); el diagnóstico y las pruebas del dominio actual están en [docs/correccion-movil](docs/correccion-movil/README.md).
 
 Aplicación académica para orientar una práctica supervisada de voltaje DC de baja tensión con un multímetro DT-830B. Incluye frontend móvil, personalización UX, API, persistencia y evaluación formativa. Conserva SQLite para ejecución local y utiliza PostgreSQL de Supabase en el despliegue de Vercel.
 

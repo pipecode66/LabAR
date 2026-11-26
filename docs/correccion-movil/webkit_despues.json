@@ -1,0 +1,107 @@
+{
+  "date": "2026-11-26T06:45:00.574770+00:00",
+  "url": "https://labarfesc.vercel.app",
+  "baseline": false,
+  "engine": "WebKit, emulación iPhone 13; sin dispositivo físico",
+  "passed": 7,
+  "failed": 0,
+  "error": null,
+  "results": [
+    {
+      "name": "Guía estándar guarda preferencias en WebKit móvil",
+      "passed": true
+    },
+    {
+      "name": "Política conserva el origen de la aplicación",
+      "passed": true
+    },
+    {
+      "name": "Crea práctica desde iPhone emulado",
+      "passed": true
+    },
+    {
+      "name": "Confirma equipo y guarda cinco verificaciones",
+      "passed": true
+    },
+    {
+      "name": "Completa guía y evaluación en WebKit móvil",
+      "passed": true
+    },
+    {
+      "name": "Resultado persiste al recargar",
+      "passed": true
+    },
+    {
+      "name": "Todas las mutaciones envían origen válido",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "path": "profile",
+      "method": "PUT",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts",
+      "method": "POST",
+      "status": 201,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/confirm",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/checklist",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/progress",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/progress",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/progress",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/progress",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/progress",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "attempts/a739700d-9126-474a-8bdd-5c66b491a2b6/quiz",
+      "method": "POST",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "data",
+      "method": "DELETE",
+      "status": 200,
+      "origin": "https://labarfesc.vercel.app"
+    }
+  ]
+}

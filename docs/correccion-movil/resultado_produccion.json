@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-26T06:45:19.436Z",
+  "origin": "https://labarfesc.vercel.app",
+  "passed": 10,
+  "failed": 0,
+  "error": null,
+  "results": [
+    {
+      "name": "Supabase conectado desde Vercel",
+      "passed": true
+    },
+    {
+      "name": "Sesión segura HttpOnly y Secure",
+      "passed": true
+    },
+    {
+      "name": "Perfil persiste entre solicitudes remotas",
+      "passed": true
+    },
+    {
+      "name": "Ejecución remota creada",
+      "passed": true
+    },
+    {
+      "name": "Otra sesión no puede modificar la ejecución",
+      "passed": true
+    },
+    {
+      "name": "Servidor exige preparación",
+      "passed": true
+    },
+    {
+      "name": "Cinco pasos y evaluación 3/3 en PostgreSQL",
+      "passed": true
+    },
+    {
+      "name": "Incidencia almacenada",
+      "passed": true
+    },
+    {
+      "name": "Exportación incluye historial e incidencia",
+      "passed": true
+    },
+    {
+      "name": "Borrado de progreso conserva perfil",
+      "passed": true
+    }
+  ],
+  "ownSessionsDeleted": true
+}

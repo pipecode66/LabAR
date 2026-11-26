@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-26T06:44:00.603288+00:00",
+  "url": "https://labarfesc.vercel.app",
+  "baseline": true,
+  "engine": "WebKit, emulación iPhone 13; sin dispositivo físico",
+  "passed": 1,
+  "failed": 0,
+  "error": null,
+  "results": [
+    {
+      "name": "Fallo previo reproducido en WebKit",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "path": "profile",
+      "method": "PUT",
+      "status": 403,
+      "origin": "https://labarfesc.vercel.app"
+    },
+    {
+      "path": "data",
+      "method": "DELETE",
+      "status": 403,
+      "origin": "https://labarfesc.vercel.app"
+    }
+  ]
+}

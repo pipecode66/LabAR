@@ -107,7 +107,7 @@ test('Vercel: adapter real conserva protección de origen y cookies a través de
     const request=async(publicOrigin)=>fetch(origin+'/api/index?__labar_path=profile',{
       method:'PUT',headers:{Cookie:cookie.split(';')[0],Origin:publicOrigin,'X-LabAR-Client':'web','Content-Type':'application/json'},body:JSON.stringify({audio:true}),
     });
-    assert.equal((await request('https://labar-theta.vercel.app')).status,200);
+    assert.equal((await request('https://labarfesc.vercel.app')).status,200);
     assert.equal((await request('https://sitio-ajeno.example')).status,403);
   }finally{await new Promise(resolve=>server.close(resolve));await handler.close();}
 });

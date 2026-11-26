@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="salud, bootstrap y contenido público no exponen claves de respuestas" time="0.036129" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="perfil: se actualiza parcialmente y rechaza tipos/campos inválidos" time="0.030289" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="actualizaciones parciales concurrentes conservan ambos cambios del perfil" time="0.014995" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="borrado completo invalida mutaciones que todavía estaban recibiendo su cuerpo" time="0.011961" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="cookie persiste perfil, progreso y reportes al reiniciar el servidor SQLite" time="0.038272" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="sesiones aisladas: otra cookie no lee ni modifica ejecuciones ajenas" time="0.009904" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="sesiones vencidas se purgan al reiniciar y el token crudo no se guarda" time="0.037645" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="crear ejecución idempotente: no duplica una práctica activa" time="0.006699" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="servidor impide iniciar guía sin confirmación y cinco verificaciones" time="0.014260" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="secuencia de pasos: no permite saltos; admite retroceso y exige guía completa antes de evaluar" time="0.017795" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="pausa y alternativa 2D conservan paso; reingreso obliga a reconfirmar" time="0.011219" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="retirar confirmación invalida lista previa y obliga a cinco comprobaciones nuevas" time="0.015454" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="calificación del servidor, retroalimentación y repetición generan un historial real" time="0.016708" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="doble envío concurrente de evaluación guarda un solo resultado inmutable" time="0.016569" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="personalización explicable: dos ejecuciones perfectas permiten guía compacta y puede apagarse" time="0.020501" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="incidencias se guardan con validación y exportación propia sin token" time="0.009907" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="borrar progreso preserva preferencias y borrar todos los datos renueva sesión" time="0.009499" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="borrado de una sesión no elimina perfil ni progreso de otra" time="0.010788" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="protección de origen y cabecera rechaza solicitudes cruzadas" time="0.005115" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="origen HTTPS público explícito funciona tras proxy y no acepta otro origen" time="0.007160" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="HTTPS tras proxy acepta el dominio de acceso y rechaza orígenes nulos o ajenos" time="0.007883" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="CLI rechaza un PUBLIC_ORIGIN con ruta o credenciales antes de abrir la base" time="0.204299" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="validación de cuerpo: JSON malformado, tipo, tamaño y array" time="0.007545" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="archivos estáticos: entrega app, impide acceso a docs/base y rutas peligrosas" time="0.012623" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="límite de solicitudes protege API por sesión sin bloquear salud" time="0.004896" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\backend.test.mjs"/>
+	<testcase name="la cámara rechaza un origen no seguro con alternativa 2D" time="0.001403" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="permiso denegado se convierte en un mensaje útil y no deja stream" time="0.000186" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="detener libera todos los tracks y retira listeners" time="0.000320" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="una cámara concedida después de cancelar libera su stream tardío" time="0.000147" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="ocultar pestaña libera cámara y notifica pérdida" time="0.000160" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="rechaza archivos inválidos y mayores de 10MB antes de procesar" time="0.000214" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testcase name="la pérdida real del marcador invoca una sola pausa por evento" time="0.000727" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\camera.test.mjs"/>
+	<testsuite name="PostgreSQL real aislado con TLS" time="6.214837" disabled="0" errors="0" tests="7" failures="0" skipped="0" hostname="juanitou">
+		<testcase name="conexión usa TLS validado y crea esquema con RLS y permisos restringidos" time="0.153466" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="transacción real revierte cambios y conserva perfiles al reabrir el store" time="0.093390" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="API completa guarda perfil, guía, evaluación, reporte y exportación en PostgreSQL" time="0.150150" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="dos instancias API comparten cookie, perfil y un único intento abierto" time="0.115704" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="dos evaluaciones concurrentes entre instancias guardan un solo resultado inmutable" time="0.136043" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="aislamiento, borrado parcial y cascada completa no afectan otra sesión" time="0.110137" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+		<testcase name="índice PostgreSQL impide dos intentos abiertos aunque un cliente omita la API" time="0.080905" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.integration.test.mjs"/>
+	</testsuite>
+	<testcase name="PostgreSQL: pool pequeño, TLS con certificado validado y sin opciones inseguras de URI" time="0.002326" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: rechaza URLs y tamaños de pool inválidos sin revelar contraseñas" time="0.000418" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: CA oficial solo para hosts Supabase y CA personalizada tiene prioridad" time="0.005324" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: esquema incluye relaciones, índice único de ejecución abierta y RLS" time="0.001341" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: inicialización concurrente comparte promesa, DDL transaccional y bloqueo de migración" time="0.001401" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: una inicialización fallida revierte y permite reintentar" time="0.001999" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: consultas parametrizadas y transacción por sesión usan una misma conexión" time="0.003297" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: error de una mutación hace rollback y libera el cliente" time="0.003191" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="PostgreSQL: cerrar dos veces termina una sola vez el pool" time="0.000302" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\postgres.test.mjs"/>
+	<testcase name="Vercel: configuración usa URL privada, cookie Secure y lista exacta de orígenes" time="0.000923" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: rewrite conserva ruta API y parámetros públicos, retira parámetro interno" time="0.000432" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: sin POSTGRES_URL devuelve503 sin crear SQLite ni instancia volátil" time="0.000369" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: reutiliza aplicación y no necesita listen() para responder" time="0.000285" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: fallo de conexión no expone credenciales y se reintenta con nueva aplicación" time="0.000539" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: rechaza rutas de rewrite inválidas antes de abrir conexión" time="0.000177" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: adapter real conserva protección de origen y cookies a través del rewrite" time="0.044050" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: build publica únicamente recursos del frontend y datos públicos de versión" time="0.033634" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: build rechaza enlace de salida y conserva el directorio apuntado" time="0.011288" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<testcase name="Vercel: configuración entrega public y conserva rutas API como función Node" time="0.001618" classname="test" file="C:\Users\juanitou\Documents\UNIVERSIDAD\PROYECTO TECNOLOGIAS EMERGENTES\tests\vercel.test.mjs"/>
+	<!-- tests 58 -->
+	<!-- suites 1 -->
+	<!-- pass 58 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 6358.8722 -->
+</testsuites>
