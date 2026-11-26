@@ -1,6 +1,6 @@
 import { createApp } from '../backend/app.mjs';
 
-const PRODUCTION_ORIGIN = 'https://labar-theta.vercel.app';
+const PRODUCTION_ORIGIN = 'https://labarfesc.vercel.app';
 
 function publicOrigin(value) {
   const parsed = new URL(value);
@@ -13,7 +13,7 @@ export function vercelOptions(env = process.env) {
   if (typeof env.POSTGRES_URL !== 'string' || !env.POSTGRES_URL.trim()) throw new Error('Configura POSTGRES_URL en Vercel.');
   const origins = [PRODUCTION_ORIGIN];
   if (env.PUBLIC_ORIGIN) origins.push(publicOrigin(env.PUBLIC_ORIGIN));
-  for (const value of [env.VERCEL_URL, env.VERCEL_PROJECT_PRODUCTION_URL]) {
+  for (const value of [env.VERCEL_URL, env.VERCEL_PROJECT_PRODUCTION_URL, env.VERCEL_BRANCH_URL]) {
     if (!value) continue;
     if (!/^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/i.test(value)) throw new Error('El dominio del despliegue no es válido.');
     origins.push(publicOrigin(`https://${value}`));

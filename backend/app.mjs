@@ -145,7 +145,7 @@ export function createApp({ databasePath, databaseUrl, store: providedStore, pos
 
   async function route(req, res) {
     res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('Referrer-Policy', 'no-referrer');
+    res.setHeader('Referrer-Policy', 'same-origin');
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
     res.setHeader('Permissions-Policy', 'camera=(self), microphone=(), geolocation=()');
@@ -192,7 +192,9 @@ export function createApp({ databasePath, databaseUrl, store: providedStore, pos
 
     let body;
     if (MUTATIONS.has(req.method)) {
-      const ownOrigin = `${req.socket.encrypted ? 'https' : 'http'}://${req.headers.host}`;
+      // Vercel termina TLS antes de entregar la solicitud a Node. Una cookie
+      // Secure indica HTTPS público aunque el socket interno no esté cifrado.
+      const ownOrigin = `${secureCookie || req.socket.encrypted ? 'https' : 'http'}://${req.headers.host}`;
       if (req.headers['x-labar-client'] !== 'web' || !req.headers.origin || ![ownOrigin, ...allowedOrigins].includes(req.headers.origin)) {
         fail(403, 'ORIGIN_REJECTED', 'La solicitud debe proceder de la misma aplicación.');
       }

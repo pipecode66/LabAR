@@ -27,7 +27,7 @@ test('Vercel: configuración usa URL privada, cookie Secure y lista exacta de or
   const options=vercelOptions({POSTGRES_URL:privateUrl,VERCEL_URL:'labar-preview.vercel.app',PUBLIC_ORIGIN:'https://labar.example.edu',POSTGRES_SSL_CA:'linea1\\nlinea2'});
   assert.equal(options.databaseUrl,privateUrl);
   assert.equal(options.secureCookie,true);
-  assert.ok(options.allowedOrigins.includes('https://labar-theta.vercel.app'));
+  assert.ok(options.allowedOrigins.includes('https://labarfesc.vercel.app'));
   assert.ok(options.allowedOrigins.includes('https://labar-preview.vercel.app'));
   assert.ok(options.allowedOrigins.includes('https://labar.example.edu'));
   assert.equal(options.postgresOptions.sslCa,'linea1\nlinea2');

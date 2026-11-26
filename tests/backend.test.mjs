@@ -436,6 +436,19 @@ test('origen HTTPS público explícito funciona tras proxy y no acepta otro orig
   } finally { await f.close(); }
 });
 
+test('HTTPS tras proxy acepta el dominio de acceso y rechaza orígenes nulos o ajenos', async () => {
+  const f = await fixture(':memory:', { secureCookie: true });
+  try {
+    const origin = f.origin.replace('http:', 'https:');
+    const c = f.client();
+    assert.equal((await c.request('/api/profile', {method:'PUT',body:{audio:true},headers:{Origin:origin}})).status,200);
+    for (const rejected of ['null','https://otro.example',origin+'.evil.example']) {
+      assert.equal((await c.request('/api/profile', {method:'PUT',body:{audio:false},headers:{Origin:rejected}})).status,403);
+    }
+    assert.equal((await fetch(f.origin)).headers.get('referrer-policy'),'same-origin');
+  } finally { await f.close(); }
+});
+
 test('CLI rechaza un PUBLIC_ORIGIN con ruta o credenciales antes de abrir la base', () => {
   const script = fileURLToPath(new URL('../backend/server.mjs', import.meta.url));
   for (const origin of ['https://labar.example.edu/ruta', 'https://usuario:clave@labar.example.edu', 'file:///tmp', 'no-es-origen']) {

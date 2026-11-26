@@ -39,7 +39,7 @@ function meter(position = '', welcome = false) {
 }
 
 async function api(path, method = 'GET', body) {
-  const options = { method, credentials: 'same-origin', cache: 'no-store', headers: { 'X-LabAR-Client': 'web' } };
+  const options = { method, mode: 'same-origin', credentials: 'same-origin', referrerPolicy: 'same-origin', cache: 'no-store', headers: { 'X-LabAR-Client': 'web' } };
   if (body !== undefined) { options.headers['Content-Type'] = 'application/json'; options.body = JSON.stringify(body); }
   let response;
   try { response = await fetch(`/api${path}`, options); } catch { throw new Error('No se pudo conectar con el servidor. Revisa que LabAR Seguro esté ejecutándose y vuelve a intentarlo.'); }
